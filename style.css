@@ -1,80 +1,245 @@
-// ==================== ACESSIBILIDADE ====================
-let tamanhoFonte = 100; // porcentagem padrão
+/* Estilos gerais - identidade visual: verde, dourado, branco */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-const aumentarBtn = document.getElementById('aumentarFonte');
-const diminuirBtn = document.getElementById('diminuirFonte');
-const contrasteBtn = document.getElementById('altoContraste');
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fefef7;
+    color: #1e3a2f;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+}
 
-// Aumentar fonte
-aumentarBtn.addEventListener('click', () => {
-    if (tamanhoFonte < 150) {
-        tamanhoFonte += 10;
-        document.body.style.fontSize = tamanhoFonte + '%';
+/* Modo alto contraste */
+body.alto-contraste {
+    background-color: #000000;
+    color: #ffff00;
+}
+
+body.alto-contraste a,
+body.alto-contraste button {
+    color: #ffff00;
+    border-color: #ffff00;
+}
+
+body.alto-contraste .card {
+    background-color: #111;
+    border: 2px solid #ffff00;
+}
+
+/* Botão de acessibilidade fixo */
+.acessibilidade {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #2c5e3f;
+    padding: 10px;
+    border-radius: 50px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.acessibilidade button {
+    background-color: #d4af37;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #1e3a2f;
+    transition: 0.2s;
+}
+
+.acessibilidade button:hover {
+    background-color: #b3922e;
+    transform: scale(1.05);
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #1e3a2f, #2c5e3f);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.subtitulo {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #d4af37;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-top: 1.5rem;
+    gap: 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    background-color: #d4af37;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+nav ul li a:hover {
+    background-color: #b3922e;
+    transform: translateY(-2px);
+}
+
+/* Main e seções */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 3rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+body.alto-contraste section {
+    background-color: #111;
+}
+
+h2 {
+    color: #2c5e3f;
+    border-left: 6px solid #d4af37;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.destaque {
+    background-color: #e9f5e9;
+    padding: 1rem;
+    border-radius: 16px;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* Cards de soluções */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.card {
+    flex: 1 1 200px;
+    background-color: #f9f3e0;
+    padding: 1rem;
+    border-radius: 16px;
+    border-bottom: 4px solid #d4af37;
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Quiz */
+.pergunta {
+    background-color: #f4f4f0;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 12px;
+}
+
+button {
+    background-color: #2c5e3f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background-color: #1e3a2f;
+}
+
+/* Jogo cenários */
+.cenarios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.cenario {
+    background-color: #d4af37;
+    color: #1e3a2f;
+    padding: 12px 20px;
+}
+
+.resultado-area {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 16px;
+    background-color: #e9f5e9;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background-color: #1e3a2f;
+    color: #d4af37;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
     }
-});
 
-// Diminuir fonte
-diminuirBtn.addEventListener('click', () => {
-    if (tamanhoFonte > 70) {
-        tamanhoFonte -= 10;
-        document.body.style.fontSize = tamanhoFonte + '%';
-    }
-});
-
-// Alto contraste
-contrasteBtn.addEventListener('click', () => {
-    document.body.classList.toggle('alto-contraste');
-});
-
-// ==================== TESTE DE CONHECIMENTO AMBIENTAL ====================
-const enviarQuiz = document.getElementById('enviarQuiz');
-const resultadoQuizDiv = document.getElementById('resultadoQuiz');
-
-enviarQuiz.addEventListener('click', () => {
-    const q1 = document.querySelector('input[name="q1"]:checked');
-    const q2 = document.querySelector('input[name="q2"]:checked');
-    const q3 = document.querySelector('input[name="q3"]:checked');
-    const q4 = document.querySelector('input[name="q4"]:checked');
-
-    if (!q1 || !q2 || !q3 || !q4) {
-        resultadoQuizDiv.innerHTML = '<p style="color: red;">⚠️ Responda todas as perguntas antes de ver seu resultado!</p>';
-        return;
+    header h1 {
+        font-size: 1.5rem;
     }
 
-    let pontos = 0;
-    if (q1.value === 'b') pontos++;
-    if (q2.value === 'c') pontos++;
-    if (q3.value === 'b') pontos++;
-    if (q4.value === 'b') pontos++;
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
 
-    const percentual = (pontos / 4) * 100;
-    let mensagem = '';
+    .cards {
+        flex-direction: column;
+    }
 
-    if (percentual === 100) mensagem = '🌿 Parabéns! Você tem 100% de consciência ambiental. É um guardião da biodiversidade!';
-    else if (percentual >= 75) mensagem = '💚 Muito bem! Você sabe bastante sobre sustentabilidade. Continue aprendendo!';
-    else if (percentual >= 50) mensagem = '🌱 Bom, mas ainda precisa estudar mais sobre o impacto dos agrotóxicos.';
-    else mensagem = '⚠️ Atenção! Você ainda não conhece os riscos do uso excessivo de agrotóxicos. Explore nosso site!';
+    .acessibilidade {
+        bottom: 10px;
+        right: 10px;
+        gap: 5px;
+    }
 
-    resultadoQuizDiv.innerHTML = `<p><strong>Seu percentual ecológico: ${percentual}%</strong><br>${mensagem}</p>`;
-});
-
-// ==================== JOGO EDUCATIVO: CENÁRIOS ====================
-const botoesCenario = document.querySelectorAll('.cenario');
-const resultadoJogo = document.getElementById('resultadoJogo');
-
-botoesCenario.forEach(botao => {
-    botao.addEventListener('click', () => {
-        const tipo = botao.getAttribute('data-tipo');
-        let mensagem = '';
-
-        if (tipo === 'excessivo') {
-            mensagem = '❌ Você escolheu USO EXCESSIVO de agrotóxicos. Resultado: solo degradado, rios contaminados, abelhas morrendo e perda total da biodiversidade. Produção cai depois de 3 anos.';
-        } else if (tipo === 'moderado') {
-            mensagem = '⚠️ Você escolheu USO MODERADO de agrotóxicos. Resultado: impacto médio. A biodiversidade diminui, mas ainda há produção. Não é o ideal.';
-        } else if (tipo === 'biologico') {
-            mensagem = '✅ Excelente! Você escolheu CONTROLE BIOLÓGICO + ROTAÇÃO DE CULTURA. Resultado: solo saudável, alta biodiversidade, abelhas polinizam livremente. Produção sustentável por muitos anos! 🌿🐞';
-        }
-
-        resultadoJogo.innerHTML = `<p>${mensagem}</p>`;
-    });
-});
+    .acessibilidade button {
+        padding: 5px 10px;
+    }
+}
+      
