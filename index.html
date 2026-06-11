@@ -2,148 +2,239 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Seduzidos Pela Cegueira da Poluição | Agro & Biodiversidade</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site educativo sobre os impactos da poluição por agrotóxicos e alternativas sustentáveis - Concurso Agrinho 2026">
+    <title>Seduzidos Pela Cegueira da Poluição | Agrinho 2026</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Botão de acessibilidade fixo -->
-    <div class="acessibilidade" id="acessibilidade">
-        <button id="aumentarFonte" aria-label="Aumentar fonte">A+</button>
-        <button id="diminuirFonte" aria-label="Diminuir fonte">A-</button>
-        <button id="altoContraste" aria-label="Ativar alto contraste">🎨 Contraste</button>
-    </div>
-
+    <!-- CABEÇALHO DO SITE -->
     <header>
-        <h1>Seduzidos Pela Cegueira da Poluição</h1>
-        <p class="subtitulo">O preço do uso excessivo de agrotóxicos para a biodiversidade</p>
+        <div class="logo">
+            <h1>🌿 Seduzidos Pela Cegueira da Poluição</h1>
+            <p class="slogan">Evitar o uso de agrotóxicos para formas mais naturais e sustentáveis</p>
+        </div>
+        <!-- Menu de navegação -->
         <nav>
             <ul>
                 <li><a href="#inicio">Início</a></li>
-                <li><a href="#sobre">Sobre o tema</a></li>
-                <li><a href="#problema">Problema ambiental</a></li>
-                <li><a href="#solucoes">Soluções sustentáveis</a></li>
-                <li><a href="#teste">Teste ecológico</a></li>
-                <li><a href="#jogo">Jogo educativo</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#problema">Problema</a></li>
+                <li><a href="#fotos">Galeria</a></li>
+                <li><a href="#solucoes">Soluções</a></li>
+                <li><a href="#teste">Teste</a></li>
                 <li><a href="#conclusao">Conclusão</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- CONTEÚDO PRINCIPAL -->
     <main>
-        <!-- SEÇÃO 1: INÍCIO -->
-        <section id="inicio">
-            <h2>Bem-vindo(a) à verdade do agro</h2>
-            <p>Você sabe o que acontece quando usamos agrotóxicos em excesso? Nosso site vai abrir seus olhos para a realidade que tentam esconder. Aqui você aprende, testa seus conhecimentos e descobre como a tecnologia pode ajudar a construir um futuro sustentável.</p>
-            <div class="destaque">
-                <p><strong>🌱 Agro forte não precisa destruir a natureza. O equilíbrio é possível!</strong></p>
+        <!-- SEÇÃO INÍCIO -->
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h2>Desperte para a realidade: a poluição que nos cega</h2>
+                <p>O uso excessivo de agrotóxicos está destruindo nossa biodiversidade. É hora de abrir os olhos e buscar formas mais naturais e sustentáveis.</p>
+                <a href="#teste" class="btn-primary">Teste seus conhecimentos →</a>
             </div>
         </section>
 
-        <!-- SEÇÃO 2: SOBRE O TEMA -->
-        <section id="sobre">
-            <h2>🌿 Sobre o tema</h2>
-            <p>O tema do Concurso Agrinho 2026 é: <strong>"Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente"</strong>. Nosso projeto mostra como o uso excessivo de agrotóxicos afeta a biodiversidade e como podemos mudar isso com tecnologias verdes.</p>
+        <!-- SEÇÃO SOBRE O TEMA -->
+        <section id="sobre" class="sobre">
+            <h2>Sobre o tema</h2>
+            <div class="sobre-grid">
+                <article class="card">
+                    <h3>🌱 Agro forte</h3>
+                    <p>A agricultura é essencial para alimentar a população mundial. O Brasil é um dos maiores produtores de alimentos do planeta.</p>
+                </article>
+                <article class="card">
+                    <h3>🌎 Cegueira da poluição</h3>
+                    <p>Muitos não enxergam os danos que os agrotóxicos causam ao meio ambiente. Estamos seduzidos por uma falsa ideia de produtividade.</p>
+                </article>
+                <article class="card">
+                    <h3>🦋 Futuro sustentável</h3>
+                    <p>É possível produzir alimentos sem destruir a natureza. Formas naturais de cultivo são o caminho para as próximas gerações.</p>
+                </article>
+            </div>
         </section>
 
-        <!-- SEÇÃO 3: PROBLEMA AMBIENTAL -->
-        <section id="problema">
-            <h2>⚠️ O problema: uso excessivo de agrotóxicos</h2>
-            <article>
-                <h3>Impactos na biodiversidade</h3>
-                <ul>
-                    <li>Contaminação de rios e nascentes;</li>
-                    <li>Morte de polinizadores (abelhas, borboletas);</li>
-                    <li>Degradação do solo e perda de nutrientes;</li>
-                    <li>Desaparecimento de espécies nativas;</li>
-                    <li>Riscos à saúde humana e animal.</li>
-                </ul>
-                <p>O Brasil é um dos maiores consumidores de agrotóxicos do mundo. Precisamos falar sobre isso.</p>
-            </article>
+        <!-- SEÇÃO APRESENTAÇÃO DO PROBLEMA -->
+        <section id="problema" class="problema">
+            <h2>O problema: o excesso de agrotóxicos que nos cega</h2>
+            <div class="problema-conteudo">
+                <div class="problema-texto">
+                    <p>O uso excessivo de agrotóxicos na agricultura convencional causa sérios danos à biodiversidade, contaminando o solo, a água e afetando animais e insetos polinizadores, como as abelhas.</p>
+                    <p><strong>Dados que assustam:</strong></p>
+                    <ul>
+                        <li>O Brasil é um dos maiores consumidores de agrotóxicos do mundo.</li>
+                        <li>Resíduos de agrotóxicos são encontrados em alimentos, rios e até no ar.</li>
+                        <li>Espécies benéficas desaparecem pelo uso descontrolado de venenos.</li>
+                        <li>Estamos <strong>seduzidos pela cegueira da poluição</strong> - preferimos não ver os danos.</li>
+                    </ul>
+                    <p><strong>A solução?</strong> Abrir os olhos e adotar formas mais naturais e sustentáveis de cultivo!</p>
+                </div>
+                <div class="problema-img">
+                    <!-- INSIRA SUA FOTOGRAFIA AQUI -->
+                    <img src="sua-foto-agrotoxico.jpg" alt="Fotografia própria: impacto dos agrotóxicos na plantação - Mayco Henrique">
+                </div>
+            </div>
         </section>
 
-        <!-- SEÇÃO 4: SOLUÇÕES SUSTENTÁVEIS -->
-        <section id="solucoes">
-            <h2>💡 Soluções sustentáveis e tecnologias</h2>
-            <div class="cards">
-                <div class="card">
+        <!-- SEÇÃO GALERIA DE FOTOGRAFIAS PRÓPRIAS -->
+        <section id="fotos" class="galeria">
+            <h2>📷 Galeria de fotografias</h2>
+            <p class="galeria-descricao">Imagens produzidas por mim para documentar a realidade do campo e as alternativas sustentáveis.</p>
+            <div class="galeria-grid">
+                <div class="foto-item">
+                    <!-- INSIRA SUA FOTOGRAFIA AQUI -->
+                    <img src="sua-foto1.jpg" alt="Fotografia própria: plantação tradicional - Mayco Henrique">
+                    <p>Plantação tradicional</p>
+                </div>
+                <div class="foto-item">
+                    <!-- INSIRA SUA FOTOGRAFIA AQUI -->
+                    <img src="sua-foto2.jpg" alt="Fotografia própria: aplicação de agrotóxicos - Mayco Henrique">
+                    <p>Aplicação de defensivos agrícolas</p>
+                </div>
+                <div class="foto-item">
+                    <!-- INSIRA SUA FOTOGRAFIA AQUI -->
+                    <img src="sua-foto3.jpg" alt="Fotografia própria: biodiversidade local - Mayco Henrique">
+                    <p>Biodiversidade na propriedade</p>
+                </div>
+                <div class="foto-item">
+                    <!-- INSIRA SUA FOTOGRAFIA AQUI -->
+                    <img src="sua-foto4.jpg" alt="Fotografia própria: prática sustentável no campo - Mayco Henrique">
+                    <p>Prática sustentável no campo</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO SOLUÇÕES SUSTENTÁVEIS -->
+        <section id="solucoes" class="solucoes">
+            <h2>Formas mais naturais e sustentáveis</h2>
+            <div class="solucoes-grid">
+                <article class="solucao-card">
+                    <div class="icone">🐞</div>
                     <h3>Controle biológico</h3>
-                    <p>Uso de predadores naturais para combater pragas, sem químicos.</p>
-                </div>
-                <div class="card">
+                    <p>Uso de predadores naturais (joaninhas, vespas) para combater pragas, substituindo agrotóxicos químicos.</p>
+                </article>
+                <article class="solucao-card">
+                    <div class="icone">🔄</div>
                     <h3>Rotação de culturas</h3>
-                    <p>Alternar plantações para manter o solo saudável e reduzir pragas.</p>
-                </div>
-                <div class="card">
-                    <h3>Agricultura de precisão</h3>
-                    <p>Drones e sensores para aplicar defensivos só onde é necessário.</p>
-                </div>
-                <div class="card">
-                    <h3>Certificação orgânica</h3>
-                    <p>Valoriza produtos sem agrotóxicos e protege a biodiversidade.</p>
-                </div>
+                    <p>Alternar plantações evita o acúmulo de pragas e mantém o solo saudável naturalmente.</p>
+                </article>
+                <article class="solucao-card">
+                    <div class="icone">🍃</div>
+                    <h3>Produção orgânica</h3>
+                    <p>Sem agrotóxicos sintéticos, preserva a biodiversidade e a saúde do consumidor.</p>
+                </article>
+                <article class="solucao-card">
+                    <div class="icone">🌿</div>
+                    <h3>Plantio direto</h3>
+                    <p>Técnica que mantém a cobertura do solo, reduzindo ervas daninhas sem herbicidas.</p>
+                </article>
             </div>
         </section>
 
-        <!-- SEÇÃO 5: TESTE DE CONHECIMENTO AMBIENTAL -->
-        <section id="teste">
-            <h2>📝 Teste ecológico: qual é o seu percentual de consciência ambiental?</h2>
+        <!-- SEÇÃO TESTE DE CONHECIMENTO AMBIENTAL (Funcionalidade JavaScript) -->
+        <section id="teste" class="teste">
+            <h2>🌿 Teste: Você está seduzido pela cegueira da poluição?</h2>
+            <p>Responda as perguntas e descubra o quanto você sabe sobre o impacto dos agrotóxicos!</p>
+            
             <form id="quizForm">
+                <!-- Pergunta 1 -->
                 <div class="pergunta">
-                    <p><strong>1. O uso excessivo de agrotóxicos pode causar:</strong></p>
-                    <label><input type="radio" name="q1" value="a"> a) Aumento da biodiversidade</label><br>
-                    <label><input type="radio" name="q1" value="b"> b) Contaminação de rios e morte de abelhas</label><br>
-                    <label><input type="radio" name="q1" value="c"> c) Melhora do solo para sempre</label>
+                    <p><strong>1. O que são agrotóxicos?</strong></p>
+                    <label><input type="radio" name="q1" value="0"> Produtos que ajudam o meio ambiente</label>
+                    <label><input type="radio" name="q1" value="1"> Substâncias químicas usadas para eliminar pragas na agricultura</label>
+                    <label><input type="radio" name="q1" value="0"> Fertilizantes naturais</label>
                 </div>
+
+                <!-- Pergunta 2 -->
                 <div class="pergunta">
-                    <p><strong>2. O que é controle biológico?</strong></p>
-                    <label><input type="radio" name="q2" value="a"> a) Usar mais veneno no plantio</label><br>
-                    <label><input type="radio" name="q2" value="b"> b) Queimar a plantação</label><br>
-                    <label><input type="radio" name="q2" value="c"> c) Usar predadores naturais contra pragas</label>
+                    <p><strong>2. Qual o impacto do uso excessivo de agrotóxicos na biodiversidade?</strong></p>
+                    <label><input type="radio" name="q2" value="0"> Nenhum impacto significativo</label>
+                    <label><input type="radio" name="q2" value="1"> Contamina o solo, água e afeta insetos polinizadores</label>
+                    <label><input type="radio" name="q2" value="0"> Aumenta a diversidade de espécies</label>
                 </div>
+
+                <!-- Pergunta 3 -->
                 <div class="pergunta">
-                    <p><strong>3. Qual prática ajuda a reduzir o uso de agrotóxicos?</strong></p>
-                    <label><input type="radio" name="q3" value="a"> a) Monocultura extensiva</label><br>
-                    <label><input type="radio" name="q3" value="b"> b) Rotação de culturas</label><br>
-                    <label><input type="radio" name="q3" value="c"> c) Plantar sempre a mesma espécie</label>
+                    <p><strong>3. Qual destas é uma alternativa NATURAL e sustentável aos agrotóxicos?</strong></p>
+                    <label><input type="radio" name="q3" value="1"> Controle biológico com predadores naturais</label>
+                    <label><input type="radio" name="q3" value="0"> Aplicar mais agrotóxicos</label>
+                    <label><input type="radio" name="q3" value="0"> Queimar a plantação</label>
                 </div>
+
+                <!-- Pergunta 4 -->
                 <div class="pergunta">
-                    <p><strong>4. Qual é a relação entre agrotóxicos e biodiversidade?</strong></p>
-                    <label><input type="radio" name="q4" value="a"> a) Agrotóxicos aumentam a biodiversidade</label><br>
-                    <label><input type="radio" name="q4" value="b"> b) Agrotóxicos em excesso diminuem a biodiversidade</label><br>
-                    <label><input type="radio" name="q4" value="c"> c) Não existe relação nenhuma</label>
+                    <p><strong>4. O que significa "seduzidos pela cegueira da poluição"?</strong></p>
+                    <label><input type="radio" name="q4" value="0"> Que a poluição é bonita</label>
+                    <label><input type="radio" name="q4" value="1"> Que muitas pessoas ignoram os danos ambientais para não se preocupar</label>
+                    <label><input type="radio" name="q4" value="0"> Que a poluição ajuda o planeta</label>
                 </div>
-                <button type="button" id="enviarQuiz">Ver meu resultado</button>
+
+                <!-- Pergunta 5 -->
+                <div class="pergunta">
+                    <p><strong>5. Por que devemos evitar o uso excessivo de agrotóxicos?</strong></p>
+                    <label><input type="radio" name="q5" value="0"> Porque são muito caros</label>
+                    <label><input type="radio" name="q5" value="0"> Porque deixam a planta feia</label>
+                    <label><input type="radio" name="q5" value="1"> Porque contaminam o meio ambiente e fazem mal à saúde</label>
+                </div>
+
+                <button type="button" id="btnResultado" class="btn-primary">Ver meu resultado</button>
             </form>
-            <div id="resultadoQuiz"></div>
+
+            <div id="resultadoQuiz" class="resultado"></div>
         </section>
 
-        <!-- SEÇÃO 6: JOGO EDUCATIVO SIMPLES -->
-        <section id="jogo">
-            <h2>🎮 Jogo educativo: você decide o futuro do solo</h2>
-            <p>Escolha uma das opções abaixo e veja o impacto ambiental da sua decisão:</p>
-            <div class="cenarios">
-                <button class="cenario" data-tipo="excessivo">🌽 Usar agrotóxico em excesso</button>
-                <button class="cenario" data-tipo="moderado">🌾 Usar agrotóxico moderado</button>
-                <button class="cenario" data-tipo="biologico">🐞 Controle biológico + rotação de cultura</button>
-            </div>
-            <div id="resultadoJogo" class="resultado-area"></div>
-        </section>
-
-        <!-- SEÇÃO 7: CONCLUSÃO -->
-        <section id="conclusao">
-            <h2>🌎 Conclusão</h2>
-            <p>O agronegócio é forte, mas só será sustentável se respeitar o meio ambiente. Proibir o uso excessivo de agrotóxicos não significa acabar com a produção – significa produzir melhor, com saúde e tecnologia. A mudança começa na sua consciência.</p>
-            <p><strong>Seduzidos pela cegueira? Não mais. Agora você sabe a verdade.</strong></p>
+        <!-- SEÇÃO CONCLUSÃO -->
+        <section id="conclusao" class="conclusao">
+            <h2>Conclusão: Abrindo os olhos para a realidade</h2>
+            <p>Não podemos mais continuar <strong>seduzidos pela cegueira da poluição</strong>. O equilíbrio entre produção agrícola e preservação ambiental é possível. Com práticas naturais, controle biológico e redução de agrotóxicos, podemos ter um agro forte e um futuro sustentável.</p>
+            <p>Como diz o tema do Agrinho 2026: <strong>"Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente"</strong> — essa é a mensagem que levamos.</p>
+            <p class="autor">Projeto desenvolvido por Mayco Henrique de Christo</p>
+            <p class="autor-fotos">📸 Fotografias próprias produzidas pelo autor</p>
         </section>
     </main>
 
+    <!-- RODAPÉ -->
     <footer>
-        <p>Projeto desenvolvido para o Concurso Agrinho 2026 | Tema: Agro forte, futuro sustentável</p>
-        <p>Estudante: Mayco Henrique de Cristo | Turma: [Sua turma]</p>
-        <p>© 2026 - Todos os direitos reservados</p>
+        <p>&copy; 2026 - Seduzidos Pela Cegueira da Poluição</p>
+        <p>Evitar o uso de agrotóxicos para formas mais naturais e sustentáveis</p>
+        <p>Concurso Agrinho 2026 | Produção autoral com fotografias e textos próprios</p>
     </footer>
+
+    <!-- BOTÃO DE ACESSIBILIDADE FIXO -->
+    <div class="acessibilidade-botao" id="botaoAcessibilidade">
+        <button id="btnAcessibilidade" aria-label="Opções de acessibilidade">♿ Acessibilidade</button>
+    </div>
+
+    <!-- PAINEL DE ACESSIBILIDADE -->
+    <div id="painelAcessibilidade" class="painel-acessibilidade">
+        <h3>Acessibilidade</h3>
+        <button id="aumentarFonte">🔍 Aumentar fonte</button>
+        <button id="diminuirFonte">🔍 Diminuir fonte</button>
+        <button id="altoContraste">🎨 Alto contraste</button>
+        <button id="btnLibrasInfo">🤟 Informações sobre Libras</button>
+        <button id="fecharPainel">✖ Fechar</button>
+    </div>
+
+    <!-- MODAL DE LIBRAS (informativo) -->
+    <div id="modalLibras" class="modal">
+        <div class="modal-conteudo">
+            <span class="fecharModal">&times;</span>
+            <h3>🤟 Acessibilidade em Libras</h3>
+            <p>Este site oferece recursos visuais para facilitar a leitura (aumento de fonte e alto contraste).</p>
+            <p>Para tradução completa para <strong>Libras (Língua Brasileira de Sinais)</strong>, recomendamos o uso de ferramentas gratuitas como:</p>
+            <ul>
+                <li><strong>VLibras</strong> - extensão gratuita do governo federal disponível para navegadores</li>
+                <li><strong>Hand Talk</strong> - aplicativo disponível para dispositivos móveis</li>
+            </ul>
+            <p>Todos os textos deste site podem ser lidos por softwares leitores de tela (NVDA, VoiceOver).</p>
+            <p><em>Se você precisa de um intérprete humano de Libras, consulte serviços especializados na sua região.</em></p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
