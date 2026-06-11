@@ -1,4 +1,9 @@
-/* Estilos gerais - identidade visual: verde, dourado, branco */
+/* ========================================
+   ESTILOS PRINCIPAIS - SEDUZIDOS PELA CEGUEIRA DA POLUIÇÃO
+   Cores: tons de verde, dourado e branco
+   ======================================== */
+
+/* RESET e configurações globais */
 * {
     margin: 0;
     padding: 0;
@@ -7,239 +12,460 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fefef7;
-    color: #1e3a2f;
+    background-color: #ffffff;
+    color: #1a3c1f;
     line-height: 1.6;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* Modo alto contraste */
+/* ALTO CONTRASTE */
 body.alto-contraste {
     background-color: #000000;
     color: #ffff00;
 }
 
 body.alto-contraste a,
-body.alto-contraste button {
+body.alto-contraste .card,
+body.alto-contraste .solucao-card,
+body.alto-contraste .foto-item {
     color: #ffff00;
+    background-color: #000000;
     border-color: #ffff00;
 }
 
-body.alto-contraste .card {
-    background-color: #111;
-    border: 2px solid #ffff00;
+body.alto-contraste .btn-primary {
+    background-color: #ffff00;
+    color: #000000;
 }
 
-/* Botão de acessibilidade fixo */
-.acessibilidade {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #2c5e3f;
-    padding: 10px;
-    border-radius: 50px;
-    display: flex;
-    gap: 10px;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-
-.acessibilidade button {
-    background-color: #d4af37;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #1e3a2f;
-    transition: 0.2s;
-}
-
-.acessibilidade button:hover {
-    background-color: #b3922e;
-    transform: scale(1.05);
-}
-
-/* Header */
+/* CABEÇALHO */
 header {
-    background: linear-gradient(135deg, #1e3a2f, #2c5e3f);
+    background: linear-gradient(135deg, #2d5a27 0%, #1a3c1f 100%);
     color: white;
-    text-align: center;
-    padding: 2rem 1rem;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-header h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+.logo h1 {
+    font-size: 1.3rem;
     letter-spacing: 1px;
-}
-
-.subtitulo {
-    font-size: 1.1rem;
-    font-style: italic;
     color: #d4af37;
 }
 
+.slogan {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: #e8e8e8;
+}
+
+/* MENU NAVEGAÇÃO */
 nav ul {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     list-style: none;
-    margin-top: 1.5rem;
-    gap: 1rem;
+    gap: 1.2rem;
+    flex-wrap: wrap;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
-    background-color: #d4af37;
-    padding: 0.5rem 1rem;
-    border-radius: 30px;
-    font-weight: bold;
-    transition: 0.2s;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    background-color: #b3922e;
-    transform: translateY(-2px);
+    color: #d4af37;
 }
 
-/* Main e seções */
+/* MAIN */
 main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
 }
 
-section {
-    margin-bottom: 3rem;
-    padding: 1rem;
-    background: white;
+/* SEÇÃO HERO */
+.hero {
+    background: linear-gradient(rgba(45, 90, 39, 0.85), rgba(26, 60, 31, 0.85)), url('https://placehold.co/1200x400/2d5a27/white?text=Desperte+para+a+realidade');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 4rem 2rem;
     border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    text-align: center;
+    margin-bottom: 3rem;
 }
 
-body.alto-contraste section {
-    background-color: #111;
-}
-
-h2 {
-    color: #2c5e3f;
-    border-left: 6px solid #d4af37;
-    padding-left: 1rem;
+.hero h2 {
+    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
-.destaque {
-    background-color: #e9f5e9;
-    padding: 1rem;
-    border-radius: 16px;
-    margin-top: 1rem;
-    text-align: center;
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
 }
 
-/* Cards de soluções */
-.cards {
-    display: flex;
-    flex-wrap: wrap;
+.btn-primary {
+    display: inline-block;
+    background-color: #d4af37;
+    color: #1a3c1f;
+    padding: 0.8rem 1.8rem;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #c5a028;
+    transform: scale(1.05);
+}
+
+/* SEÇÕES GERAIS */
+section {
+    margin-bottom: 4rem;
+}
+
+h2 {
+    color: #2d5a27;
+    border-left: 6px solid #d4af37;
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+/* GRID SOBRE */
+.sobre-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
-    margin-top: 1rem;
 }
 
 .card {
-    flex: 1 1 200px;
-    background-color: #f9f3e0;
-    padding: 1rem;
+    background-color: #f5f5f0;
+    padding: 1.5rem;
     border-radius: 16px;
-    border-bottom: 4px solid #d4af37;
-    transition: 0.2s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
 }
 
 .card:hover {
     transform: translateY(-5px);
 }
 
-/* Quiz */
+.card h3 {
+    color: #d4af37;
+    margin-bottom: 0.8rem;
+}
+
+/* PROBLEMA */
+.problema-conteudo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.problema-texto ul {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+}
+
+.problema-texto li {
+    margin: 0.5rem 0;
+}
+
+.problema-img img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    object-fit: cover;
+    height: 250px;
+}
+
+/* GALERIA DE FOTOS */
+.galeria {
+    background-color: #f9f9f4;
+    padding: 2rem;
+    border-radius: 24px;
+}
+
+.galeria-descricao {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.foto-item {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.foto-item:hover {
+    transform: translateY(-5px);
+}
+
+.foto-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.foto-item p {
+    padding: 0.8rem;
+    font-weight: 500;
+    color: #2d5a27;
+}
+
+/* SOLUÇÕES */
+.solucoes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.solucao-card {
+    background: linear-gradient(145deg, #ffffff, #f0f0ea);
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid #e0ddd0;
+    transition: all 0.3s;
+}
+
+.solucao-card:hover {
+    border-color: #d4af37;
+}
+
+.icone {
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+}
+
+.solucao-card h3 {
+    color: #2d5a27;
+    margin-bottom: 0.8rem;
+}
+
+/* TESTE (QUIZ) */
+.teste {
+    background-color: #f9f9f4;
+    padding: 2rem;
+    border-radius: 24px;
+}
+
 .pergunta {
-    background-color: #f4f4f0;
+    background: white;
     padding: 1rem;
     margin: 1rem 0;
     border-radius: 12px;
+    border-left: 4px solid #d4af37;
 }
 
-button {
-    background-color: #2c5e3f;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 40px;
+.pergunta p {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.pergunta label {
+    display: block;
+    margin: 0.5rem 0;
     cursor: pointer;
-    font-weight: bold;
-    margin-top: 1rem;
 }
 
-button:hover {
-    background-color: #1e3a2f;
-}
-
-/* Jogo cenários */
-.cenarios {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin: 1rem 0;
-}
-
-.cenario {
-    background-color: #d4af37;
-    color: #1e3a2f;
-    padding: 12px 20px;
-}
-
-.resultado-area {
-    margin-top: 1.5rem;
+.resultado {
+    margin-top: 2rem;
     padding: 1rem;
-    border-radius: 16px;
-    background-color: #e9f5e9;
+    text-align: center;
+    font-size: 1.3rem;
     font-weight: bold;
+    background-color: #2d5a27;
+    color: white;
+    border-radius: 12px;
+    display: none;
 }
 
-/* Footer */
-footer {
-    background-color: #1e3a2f;
-    color: #d4af37;
-    text-align: center;
+/* CONCLUSÃO */
+.conclusao {
+    background: linear-gradient(135deg, #2d5a27, #1a3c1f);
+    color: white;
     padding: 2rem;
+    border-radius: 24px;
+    text-align: center;
+}
+
+.conclusao h2 {
+    color: #d4af37;
+    border-left: none;
+}
+
+.autor, .autor-fotos {
+    margin-top: 1rem;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* RODAPÉ */
+footer {
+    background-color: #1a3c1f;
+    color: #ccccaa;
+    text-align: center;
+    padding: 1.5rem;
     margin-top: 2rem;
 }
 
-/* Responsivo */
-@media (max-width: 768px) {
-    main {
-        padding: 1rem;
-    }
+/* ========== ACESSIBILIDADE ========== */
+.acessibilidade-botao {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
 
-    header h1 {
-        font-size: 1.5rem;
+#btnAcessibilidade {
+    background-color: #d4af37;
+    color: #1a3c1f;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+}
+
+#btnAcessibilidade:hover {
+    background-color: #c5a028;
+}
+
+.painel-acessibilidade {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color: white;
+    border: 2px solid #d4af37;
+    border-radius: 16px;
+    padding: 1rem;
+    width: 250px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    z-index: 1001;
+    display: none;
+}
+
+.painel-acessibilidade h3 {
+    margin-bottom: 1rem;
+    color: #2d5a27;
+}
+
+.painel-acessibilidade button {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 8px;
+    background-color: #2d5a27;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.painel-acessibilidade button:hover {
+    background-color: #1a3c1f;
+}
+
+#fecharPainel {
+    background-color: #999;
+}
+
+/* MODAL LIBRAS */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-conteudo {
+    background-color: white;
+    margin: 10% auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 20px;
+    position: relative;
+    border-top: 8px solid #d4af37;
+}
+
+.modal-conteudo ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.fecharModal {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
     }
 
     nav ul {
-        flex-direction: column;
-        align-items: center;
+        justify-content: center;
     }
 
-    .cards {
-        flex-direction: column;
+    .problema-conteudo {
+        grid-template-columns: 1fr;
     }
 
-    .acessibilidade {
-        bottom: 10px;
-        right: 10px;
-        gap: 5px;
+    .hero h2 {
+        font-size: 1.5rem;
     }
 
-    .acessibilidade button {
-        padding: 5px 10px;
+    main {
+        padding: 1rem;
+    }
+    
+    .galeria-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     }
 }
-      
+
+@media (max-width: 480px) {
+    .solucoes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn-primary {
+        padding: 0.6rem 1.2rem;
+    }
+}
