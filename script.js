@@ -1,80 +1,156 @@
-// ==================== ACESSIBILIDADE ====================
-let tamanhoFonte = 100; // porcentagem padrão
+/* ========================================
+   SCRIPT PRINCIPAL - SEDUZIDOS PELA CEGUEIRA DA POLUIÇÃO
+   Funcionalidades: Quiz, Acessibilidade (fonte, contraste, Libras)
+   ======================================== */
 
-const aumentarBtn = document.getElementById('aumentarFonte');
-const diminuirBtn = document.getElementById('diminuirFonte');
-const contrasteBtn = document.getElementById('altoContraste');
+// Aguarda o carregamento completo do DOM
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // ========== 1. FUNCIONALIDADE PRINCIPAL: QUIZ ==========
+    const botaoResultado = document.getElementById('btnResultado');
+    const resultadoDiv = document.getElementById('resultadoQuiz');
 
-// Aumentar fonte
-aumentarBtn.addEventListener('click', () => {
-    if (tamanhoFonte < 150) {
-        tamanhoFonte += 10;
-        document.body.style.fontSize = tamanhoFonte + '%';
+    if (botaoResultado) {
+        botaoResultado.addEventListener('click', function() {
+            // Coletar respostas das 5 perguntas
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const q3 = document.querySelector('input[name="q3"]:checked');
+            const q4 = document.querySelector('input[name="q4"]:checked');
+            const q5 = document.querySelector('input[name="q5"]:checked');
+            
+            // Verificar se todas foram respondidas
+            if (!q1 || !q2 || !q3 || !q4 || !q5) {
+                resultadoDiv.style.display = 'block';
+                resultadoDiv.innerHTML = '⚠️ Por favor, responda todas as 5 perguntas antes de ver o resultado!';
+                resultadoDiv.style.backgroundColor = '#cc3300';
+                return;
+            }
+            
+            // Somar pontos (cada resposta correta vale 1)
+            let pontos = 0;
+            if (q1.value === '1') pontos++;
+            if (q2.value === '1') pontos++;
+            if (q3.value === '1') pontos++;
+            if (q4.value === '1') pontos++;
+            if (q5.value === '1') pontos++;
+            
+            // Calcular percentual
+            const percentual = (pontos / 5) * 100;
+            
+            // Mensagem personalizada
+            let mensagem = '';
+            if (percentual === 100) {
+                mensagem = '🌟 Parabéns! Você NÃO está seduzido pela cegueira da poluição! Enxerga a realidade e busca soluções sustentáveis!';
+            } else if (percentual >= 80) {
+                mensagem = '🍃 Muito bom! Você já tem consciência, mas ainda pode abrir mais os olhos para o problema.';
+            } else if (percentual >= 60) {
+                mensagem = '🌱 Bom! Você está no caminho, mas precisa conhecer mais sobre alternativas naturais.';
+            } else if (percentual >= 40) {
+                mensagem = '⚠️ Atenção! Você ainda está um pouco seduzido pela cegueira da poluição. Leia o conteúdo do site!';
+            } else {
+                mensagem = '❌ Infelizmente, você ainda está seduzido pela cegueira da poluição. Reflita sobre os impactos dos agrotóxicos!';
+            }
+            
+            // Exibir resultado
+            resultadoDiv.style.display = 'block';
+            resultadoDiv.innerHTML = `🌿 Seu nível de consciência ambiental: ${percentual}%<br>${mensagem}`;
+            resultadoDiv.style.backgroundColor = '#2d5a27';
+            
+            // Rolar até o resultado
+            resultadoDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
     }
-});
-
-// Diminuir fonte
-diminuirBtn.addEventListener('click', () => {
-    if (tamanhoFonte > 70) {
-        tamanhoFonte -= 10;
-        document.body.style.fontSize = tamanhoFonte + '%';
+    
+    // ========== 2. ACESSIBILIDADE: PAINEL ==========
+    const btnAcessibilidade = document.getElementById('btnAcessibilidade');
+    const painel = document.getElementById('painelAcessibilidade');
+    const fecharPainel = document.getElementById('fecharPainel');
+    
+    if (btnAcessibilidade) {
+        btnAcessibilidade.addEventListener('click', function() {
+            painel.style.display = painel.style.display === 'block' ? 'none' : 'block';
+        });
     }
-});
-
-// Alto contraste
-contrasteBtn.addEventListener('click', () => {
-    document.body.classList.toggle('alto-contraste');
-});
-
-// ==================== TESTE DE CONHECIMENTO AMBIENTAL ====================
-const enviarQuiz = document.getElementById('enviarQuiz');
-const resultadoQuizDiv = document.getElementById('resultadoQuiz');
-
-enviarQuiz.addEventListener('click', () => {
-    const q1 = document.querySelector('input[name="q1"]:checked');
-    const q2 = document.querySelector('input[name="q2"]:checked');
-    const q3 = document.querySelector('input[name="q3"]:checked');
-    const q4 = document.querySelector('input[name="q4"]:checked');
-
-    if (!q1 || !q2 || !q3 || !q4) {
-        resultadoQuizDiv.innerHTML = '<p style="color: red;">⚠️ Responda todas as perguntas antes de ver seu resultado!</p>';
-        return;
+    
+    if (fecharPainel) {
+        fecharPainel.addEventListener('click', function() {
+            painel.style.display = 'none';
+        });
     }
-
-    let pontos = 0;
-    if (q1.value === 'b') pontos++;
-    if (q2.value === 'c') pontos++;
-    if (q3.value === 'b') pontos++;
-    if (q4.value === 'b') pontos++;
-
-    const percentual = (pontos / 4) * 100;
-    let mensagem = '';
-
-    if (percentual === 100) mensagem = '🌿 Parabéns! Você tem 100% de consciência ambiental. É um guardião da biodiversidade!';
-    else if (percentual >= 75) mensagem = '💚 Muito bem! Você sabe bastante sobre sustentabilidade. Continue aprendendo!';
-    else if (percentual >= 50) mensagem = '🌱 Bom, mas ainda precisa estudar mais sobre o impacto dos agrotóxicos.';
-    else mensagem = '⚠️ Atenção! Você ainda não conhece os riscos do uso excessivo de agrotóxicos. Explore nosso site!';
-
-    resultadoQuizDiv.innerHTML = `<p><strong>Seu percentual ecológico: ${percentual}%</strong><br>${mensagem}</p>`;
-});
-
-// ==================== JOGO EDUCATIVO: CENÁRIOS ====================
-const botoesCenario = document.querySelectorAll('.cenario');
-const resultadoJogo = document.getElementById('resultadoJogo');
-
-botoesCenario.forEach(botao => {
-    botao.addEventListener('click', () => {
-        const tipo = botao.getAttribute('data-tipo');
-        let mensagem = '';
-
-        if (tipo === 'excessivo') {
-            mensagem = '❌ Você escolheu USO EXCESSIVO de agrotóxicos. Resultado: solo degradado, rios contaminados, abelhas morrendo e perda total da biodiversidade. Produção cai depois de 3 anos.';
-        } else if (tipo === 'moderado') {
-            mensagem = '⚠️ Você escolheu USO MODERADO de agrotóxicos. Resultado: impacto médio. A biodiversidade diminui, mas ainda há produção. Não é o ideal.';
-        } else if (tipo === 'biologico') {
-            mensagem = '✅ Excelente! Você escolheu CONTROLE BIOLÓGICO + ROTAÇÃO DE CULTURA. Resultado: solo saudável, alta biodiversidade, abelhas polinizam livremente. Produção sustentável por muitos anos! 🌿🐞';
+    
+    // ========== 3. AUMENTAR E DIMINUIR FONTE ==========
+    const aumentarFonte = document.getElementById('aumentarFonte');
+    const diminuirFonte = document.getElementById('diminuirFonte');
+    
+    function ajustarFonte(aumentar) {
+        const body = document.body;
+        let tamanhoAtual = parseFloat(window.getComputedStyle(body).fontSize);
+        let novo = aumentar ? tamanhoAtual + 2 : tamanhoAtual - 2;
+        if (novo >= 12 && novo <= 28) {
+            body.style.fontSize = novo + 'px';
         }
-
-        resultadoJogo.innerHTML = `<p>${mensagem}</p>`;
+    }
+    
+    if (aumentarFonte) {
+        aumentarFonte.addEventListener('click', function() {
+            ajustarFonte(true);
+        });
+    }
+    
+    if (diminuirFonte) {
+        diminuirFonte.addEventListener('click', function() {
+            ajustarFonte(false);
+        });
+    }
+    
+    // ========== 4. ALTO CONTRASTE ==========
+    const altoContraste = document.getElementById('altoContraste');
+    
+    if (altoContraste) {
+        altoContraste.addEventListener('click', function() {
+            document.body.classList.toggle('alto-contraste');
+            if (document.body.classList.contains('alto-contraste')) {
+                localStorage.setItem('altoContraste', 'ativo');
+            } else {
+                localStorage.setItem('altoContraste', 'desativado');
+            }
+        });
+        
+        if (localStorage.getItem('altoContraste') === 'ativo') {
+            document.body.classList.add('alto-contraste');
+        }
+    }
+    
+    // ========== 5. MODAL LIBRAS ==========
+    const btnLibras = document.getElementById('btnLibrasInfo');
+    const modalLibras = document.getElementById('modalLibras');
+    const fecharModal = document.querySelector('.fecharModal');
+    
+    if (btnLibras) {
+        btnLibras.addEventListener('click', function() {
+            modalLibras.style.display = 'block';
+        });
+    }
+    
+    if (fecharModal) {
+        fecharModal.addEventListener('click', function() {
+            modalLibras.style.display = 'none';
+        });
+    }
+    
+    window.addEventListener('click', function(event) {
+        if (event.target === modalLibras) {
+            modalLibras.style.display = 'none';
+        }
+    });
+    
+    // ========== 6. FECHAR PAINEL AO CLICAR FORA ==========
+    document.addEventListener('click', function(event) {
+        if (painel && painel.style.display === 'block') {
+            if (!painel.contains(event.target) && event.target !== btnAcessibilidade) {
+                painel.style.display = 'none';
+            }
+        }
     });
 });
