@@ -19,33 +19,18 @@ body {
     padding: 0 2rem;
 }
 
-/* ===== ACESSIBILIDADE ===== */
-body.alto-contraste {
-    background: #000000;
-    color: #ffff00;
+/* ===== AJUSTE PARA VLIBRAS ===== */
+.vw-plugin-wrapper {
+    z-index: 1000 !important;
 }
 
-body.alto-contraste .header,
-body.alto-contraste .footer {
-    border-color: #ffff00;
-    background: #000;
-}
-
-body.alto-contraste .problema-card,
-body.alto-contraste .impacto-item,
-body.alto-contraste .quiz-pergunta,
-body.alto-contraste .jogo-container,
-body.alto-contraste .chamada-conteudo {
-    background: #111;
-    border-color: #ffff00;
-}
-
+/* ===== ACESSIBILIDADE - FONTES ===== */
 .fonte-pequena { font-size: 14px; }
 .fonte-normal { font-size: 16px; }
 .fonte-grande { font-size: 18px; }
 .fonte-muito-grande { font-size: 21px; }
 
-/* Botão acessibilidade */
+/* Botão acessibilidade - fonte */
 .acessibilidade {
     position: fixed;
     bottom: 2rem;
@@ -154,7 +139,7 @@ body.alto-contraste .chamada-conteudo {
     color: #d4a373;
 }
 
-/* ===== HERO ===== */
+/* ===== HERO sem imagem ===== */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -166,6 +151,7 @@ body.alto-contraste .chamada-conteudo {
 .hero .container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 4rem;
     flex-wrap: wrap;
 }
@@ -190,14 +176,37 @@ body.alto-contraste .chamada-conteudo {
     margin-bottom: 2rem;
 }
 
-.hero-imagem {
+.hero-decoracao {
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 300px;
 }
 
-.hero-imagem img {
-    width: 100%;
-    border-radius: 16px;
-    box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15);
+.decoracao-circulo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #d8f3dc 0%, #95d5b2 100%);
+    animation: pulsar 3s ease-in-out infinite;
+}
+
+.decoracao-planta {
+    position: absolute;
+    font-size: 5rem;
+    animation: flutuar 2s ease-in-out infinite;
+}
+
+@keyframes pulsar {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
 }
 
 .btn-hero {
@@ -285,7 +294,7 @@ body.alto-contraste .chamada-conteudo {
     line-height: 1.6;
 }
 
-/* ===== IMPACTOS (nova seção) ===== */
+/* ===== IMPACTOS ===== */
 .impactos {
     padding: 5rem 0;
     background: #f0f7f0;
@@ -320,6 +329,11 @@ body.alto-contraste .chamada-conteudo {
     background: #ffffff;
     border-radius: 16px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.impacto-item:hover {
+    transform: translateY(-5px);
 }
 
 .impacto-numero {
@@ -334,15 +348,21 @@ body.alto-contraste .chamada-conteudo {
     font-weight: 500;
 }
 
-.impactos-imagem {
-    margin-top: 2rem;
+.impactos-decoracao {
+    text-align: center;
+    padding: 2rem;
 }
 
-.impactos-imagem img {
-    width: 100%;
-    border-radius: 16px;
-    height: 300px;
-    object-fit: cover;
+.decoracao-linha {
+    width: 100px;
+    height: 2px;
+    background: #d4a373;
+    margin: 0 auto 1rem;
+}
+
+.decoracao-texto {
+    font-size: 1.5rem;
+    letter-spacing: 8px;
 }
 
 /* ===== SOLUÇÕES ===== */
@@ -376,6 +396,11 @@ body.alto-contraste .chamada-conteudo {
 .solucao-item {
     border-left: 3px solid #d4a373;
     padding-left: 1.5rem;
+    transition: transform 0.2s;
+}
+
+.solucao-item:hover {
+    transform: translateX(5px);
 }
 
 .solucao-numero {
@@ -442,6 +467,14 @@ body.alto-contraste .chamada-conteudo {
     width: 100%;
     position: absolute;
     bottom: 0;
+}
+
+.sol-decoracao {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    animation: flutuar 3s ease-in-out infinite;
 }
 
 .planta {
@@ -787,6 +820,7 @@ input[type="range"]::-webkit-slider-thumb {
     font-style: italic;
     color: #95d5b2;
     font-size: 0.875rem;
+    text-align: right;
 }
 
 .footer-copyright {
@@ -812,56 +846,3 @@ input[type="range"]::-webkit-slider-thumb {
         align-items: center;
         text-align: center;
     }
-    
-    .nav {
-        justify-content: center;
-    }
-    
-    .problema-header h2,
-    .impactos-header h2,
-    .solucoes-header h2,
-    .jogo-header h2,
-    .quiz-header h2 {
-        font-size: 2rem;
-    }
-    
-    .jogo-controles {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .quiz-pergunta {
-        padding: 1.5rem;
-    }
-    
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .footer-links {
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    
-    .footer-citacao {
-        margin: 0 auto;
-        text-align: center;
-    }
-    
-    .chamada-botoes {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .hero .container {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .hero-descricao {
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
