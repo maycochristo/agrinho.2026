@@ -8,7 +8,7 @@
 body {
     font-family: 'Inter', sans-serif;
     background: #ffffff;
-    color: #1a1a1a;
+    color: #1a2e1f;
     line-height: 1.5;
     transition: all 0.2s ease;
 }
@@ -32,16 +32,11 @@ body.alto-contraste .footer {
 }
 
 body.alto-contraste .problema-card,
+body.alto-contraste .impacto-item,
 body.alto-contraste .quiz-pergunta,
-body.alto-contraste .jogo-container {
+body.alto-contraste .jogo-container,
+body.alto-contraste .chamada-conteudo {
     background: #111;
-    border-color: #ffff00;
-}
-
-body.alto-contraste .opcao,
-body.alto-contraste .btn-jogo {
-    background: #222;
-    color: #ffff00;
     border-color: #ffff00;
 }
 
@@ -50,13 +45,14 @@ body.alto-contraste .btn-jogo {
 .fonte-grande { font-size: 18px; }
 .fonte-muito-grande { font-size: 21px; }
 
+/* Botão acessibilidade */
 .acessibilidade {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
     width: 48px;
     height: 48px;
-    background: #1a1a1a;
+    background: #2d6a4f;
     color: white;
     border-radius: 50%;
     display: flex;
@@ -66,11 +62,12 @@ body.alto-contraste .btn-jogo {
     z-index: 1000;
     font-weight: 600;
     transition: transform 0.2s;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
 }
 
 .acessibilidade:hover {
     transform: scale(1.05);
+    background: #1b4332;
 }
 
 .acessibilidade-panel {
@@ -78,7 +75,7 @@ body.alto-contraste .btn-jogo {
     bottom: 6rem;
     right: 2rem;
     background: white;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #d8f3dc;
     border-radius: 12px;
     padding: 0.5rem;
     display: none;
@@ -88,7 +85,7 @@ body.alto-contraste .btn-jogo {
 }
 
 .acessibilidade-panel button {
-    background: #1a1a1a;
+    background: #2d6a4f;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -99,8 +96,8 @@ body.alto-contraste .btn-jogo {
 }
 
 .acessibilidade-panel button:hover {
-    background: #c6a43b;
-    color: #1a1a1a;
+    background: #d4a373;
+    color: #1a2e1f;
 }
 
 /* ===== HEADER ===== */
@@ -110,9 +107,9 @@ body.alto-contraste .btn-jogo {
     width: 100%;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid #e9ecef;
     z-index: 100;
-    padding: 1.25rem 0;
+    padding: 1rem 0;
 }
 
 .header .container {
@@ -127,14 +124,14 @@ body.alto-contraste .btn-jogo {
     font-size: 1.25rem;
     font-weight: 600;
     letter-spacing: -0.02em;
-    color: #1a1a1a;
+    color: #1b4332;
 }
 
 .logo-detalhe {
     display: inline-block;
     width: 30px;
-    height: 1px;
-    background: #c6a43b;
+    height: 2px;
+    background: #d4a373;
     margin-left: 0.75rem;
     vertical-align: middle;
 }
@@ -142,18 +139,19 @@ body.alto-contraste .btn-jogo {
 .nav {
     display: flex;
     gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .nav a {
     text-decoration: none;
-    color: #1a1a1a;
+    color: #2d6a4f;
     font-size: 0.875rem;
-    font-weight: 400;
+    font-weight: 500;
     transition: color 0.2s;
 }
 
 .nav a:hover {
-    color: #c6a43b;
+    color: #d4a373;
 }
 
 /* ===== HERO ===== */
@@ -162,156 +160,284 @@ body.alto-contraste .btn-jogo {
     display: flex;
     align-items: center;
     padding: 6rem 0 4rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.hero-conteudo {
+    flex: 1;
 }
 
 .hero-titulo {
     font-size: 4rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    color: #1a1a1a;
+    color: #1b4332;
 }
 
 .hero-descricao {
     font-size: 1.125rem;
-    color: #666;
+    color: #2d6a4f;
     max-width: 500px;
     margin-bottom: 2rem;
+}
+
+.hero-imagem {
+    flex: 1;
+}
+
+.hero-imagem img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15);
 }
 
 .btn-hero {
     display: inline-block;
     text-decoration: none;
-    color: #1a1a1a;
-    font-weight: 500;
-    border-bottom: 2px solid #c6a43b;
+    color: #1b4332;
+    font-weight: 600;
+    border-bottom: 2px solid #d4a373;
     padding-bottom: 0.25rem;
-    transition: gap 0.2s;
+    transition: all 0.2s;
 }
 
 .btn-hero:hover {
     letter-spacing: 0.5px;
+    color: #d4a373;
 }
 
 /* ===== PROBLEMA ===== */
 .problema {
     padding: 5rem 0;
-    background: #fafafa;
+    background: #ffffff;
 }
 
-.problema-header,
-.solucoes-header,
-.jogo-header,
-.quiz-header {
+.problema-header {
     margin-bottom: 3rem;
+    text-align: center;
 }
 
 .badge {
     font-size: 0.75rem;
-    color: #c6a43b;
-    font-weight: 500;
+    color: #d4a373;
+    font-weight: 600;
     letter-spacing: 0.1em;
-    display: block;
+    display: inline-block;
     margin-bottom: 0.5rem;
 }
 
-.problema-header h2,
-.solucoes-header h2,
-.jogo-header h2,
-.quiz-header h2 {
+.problema-header h2 {
     font-size: 2.5rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: -0.02em;
-    color: #1a1a1a;
+    color: #1b4332;
+    margin-bottom: 1rem;
+}
+
+.problema-header p {
+    color: #2d6a4f;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .problema-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    margin-top: 2rem;
 }
 
 .problema-card {
-    padding: 0;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 16px;
+    transition: transform 0.2s;
+}
+
+.problema-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 .problema-card h3 {
     font-size: 1.25rem;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 0.75rem;
-    color: #1a1a1a;
+    color: #1b4332;
 }
 
 .problema-card p {
-    color: #666;
+    color: #495057;
     font-size: 0.9375rem;
     line-height: 1.6;
+}
+
+/* ===== IMPACTOS (nova seção) ===== */
+.impactos {
+    padding: 5rem 0;
+    background: #f0f7f0;
+}
+
+.impactos-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.impactos-header h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1b4332;
+    margin-bottom: 1rem;
+}
+
+.impactos-header p {
+    color: #2d6a4f;
+}
+
+.impactos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.impacto-item {
+    text-align: center;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.impacto-numero {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #d4a373;
+    margin-bottom: 0.5rem;
+}
+
+.impacto-item p {
+    color: #2d6a4f;
+    font-weight: 500;
+}
+
+.impactos-imagem {
+    margin-top: 2rem;
+}
+
+.impactos-imagem img {
+    width: 100%;
+    border-radius: 16px;
+    height: 300px;
+    object-fit: cover;
 }
 
 /* ===== SOLUÇÕES ===== */
 .solucoes {
     padding: 5rem 0;
+    background: #ffffff;
+}
+
+.solucoes-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.solucoes-header h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1b4332;
+    margin-bottom: 0.5rem;
 }
 
 .solucoes-header p {
-    color: #666;
-    margin-top: 0.5rem;
+    color: #2d6a4f;
 }
 
 .solucoes-lista {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
 }
 
 .solucao-item {
-    border-top: 1px solid #e0e0e0;
-    padding-top: 2rem;
+    border-left: 3px solid #d4a373;
+    padding-left: 1.5rem;
 }
 
 .solucao-numero {
     font-size: 0.75rem;
-    color: #c6a43b;
+    color: #d4a373;
     letter-spacing: 0.05em;
     margin-bottom: 0.5rem;
+    font-weight: 600;
 }
 
 .solucao-item h3 {
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1.35rem;
+    font-weight: 600;
     margin-bottom: 0.75rem;
-    color: #1a1a1a;
+    color: #1b4332;
 }
 
 .solucao-item p {
-    color: #666;
-    max-width: 500px;
+    color: #495057;
+    line-height: 1.6;
 }
 
 /* ===== JOGO EDUCATIVO ===== */
 .jogo {
     padding: 5rem 0;
-    background: #fafafa;
+    background: #f8f9fa;
+}
+
+.jogo-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.jogo-header h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1b4332;
+}
+
+.jogo-header p {
+    color: #2d6a4f;
 }
 
 .jogo-container {
     background: white;
     padding: 2.5rem;
-    border-radius: 4px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .fazenda {
-    background: #8B7355;
+    background: #9c7c5b;
     min-height: 200px;
-    border-radius: 8px;
+    border-radius: 16px;
     position: relative;
     margin-bottom: 2rem;
     overflow: hidden;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .solo {
-    background: #6B4C3B;
+    background: #5c3e2b;
     height: 60px;
     width: 100%;
     position: absolute;
@@ -325,22 +451,23 @@ body.alto-contraste .btn-jogo {
     transform: translateX(-50%);
     width: 40px;
     height: 0;
-    background: #4CAF50;
+    background: #40916c;
     transition: all 0.3s ease;
     border-radius: 4px 4px 0 0;
 }
 
 .planta.crescida {
     height: 100px;
+    background: #2d6a4f;
 }
 
 .planta.morta {
-    background: #8B4513;
+    background: #7f4f24;
     height: 30px;
 }
 
 .planta.doente {
-    background: #DAA520;
+    background: #e9c46a;
     height: 60px;
 }
 
@@ -353,8 +480,9 @@ body.alto-contraste .btn-jogo {
 
 .grupo-controle h3 {
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 1rem;
+    color: #1b4332;
 }
 
 .controle-quantidade {
@@ -366,9 +494,10 @@ body.alto-contraste .btn-jogo {
 
 input[type="range"] {
     flex: 1;
-    height: 2px;
-    background: #e0e0e0;
+    height: 4px;
+    background: #d8f3dc;
     -webkit-appearance: none;
+    border-radius: 2px;
 }
 
 input[type="range"]:focus {
@@ -380,40 +509,54 @@ input[type="range"]::-webkit-slider-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #c6a43b;
+    background: #d4a373;
     cursor: pointer;
 }
 
 .btn-jogo {
     width: 100%;
     padding: 0.875rem;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #d8f3dc;
     background: white;
     cursor: pointer;
     font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 8px;
     transition: all 0.2s;
 }
 
+.btn-jogo.natural {
+    background: #f0f7f0;
+    color: #2d6a4f;
+}
+
 .btn-jogo.natural:hover {
-    border-color: #4CAF50;
-    background: #f0f9f0;
+    background: #2d6a4f;
+    color: white;
+    border-color: #2d6a4f;
+}
+
+.btn-jogo.quimico {
+    background: #fff5f0;
+    color: #bc6c25;
 }
 
 .btn-jogo.quimico:hover {
-    border-color: #dc3545;
-    background: #fff5f5;
+    background: #bc6c25;
+    color: white;
+    border-color: #bc6c25;
 }
 
 .jogo-resultado {
-    background: #f5f5f5;
+    background: #f8f9fa;
     padding: 1.5rem;
     text-align: center;
     margin-bottom: 1.5rem;
-    border-radius: 4px;
+    border-radius: 12px;
 }
 
 .jogo-resultado p {
-    color: #666;
+    color: #2d6a4f;
     font-size: 0.9375rem;
 }
 
@@ -421,40 +564,53 @@ input[type="range"]::-webkit-slider-thumb {
     width: 100%;
     padding: 0.75rem;
     background: none;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #d8f3dc;
     cursor: pointer;
     font-size: 0.875rem;
+    border-radius: 8px;
     transition: all 0.2s;
 }
 
 .btn-reiniciar-jogo:hover {
-    background: #1a1a1a;
+    background: #1b4332;
     color: white;
-    border-color: #1a1a1a;
+    border-color: #1b4332;
 }
 
 /* ===== QUIZ ===== */
 .quiz {
     padding: 5rem 0;
+    background: #ffffff;
+}
+
+.quiz-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.quiz-header h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1b4332;
 }
 
 .quiz-header p {
-    color: #666;
-    margin-top: 0.5rem;
+    color: #2d6a4f;
 }
 
 .quiz-pergunta {
-    background: white;
-    padding: 3rem;
-    border-radius: 4px;
-    border: 1px solid #f0f0f0;
+    background: #f8f9fa;
+    padding: 2.5rem;
+    border-radius: 16px;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .quiz-pergunta h3 {
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1.35rem;
+    font-weight: 600;
     margin-bottom: 2rem;
-    color: #1a1a1a;
+    color: #1b4332;
 }
 
 .opcoes {
@@ -466,62 +622,127 @@ input[type="range"]::-webkit-slider-thumb {
 
 .opcao {
     padding: 1rem 1.5rem;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #d8f3dc;
     background: white;
     cursor: pointer;
     transition: all 0.2s;
     font-size: 0.9375rem;
-    color: #333;
+    color: #2d6a4f;
+    border-radius: 12px;
 }
 
 .opcao:hover {
-    border-color: #c6a43b;
+    border-color: #d4a373;
     background: #fffdf8;
+    transform: translateX(5px);
 }
 
 .quiz-progresso {
     font-size: 0.75rem;
-    color: #999;
+    color: #95d5b2;
     letter-spacing: 0.05em;
 }
 
 .quiz-resultado {
-    background: white;
-    padding: 3rem;
+    background: #f8f9fa;
+    padding: 2.5rem;
     text-align: center;
-    border: 1px solid #f0f0f0;
-    border-radius: 4px;
+    border-radius: 16px;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .quiz-resultado h3 {
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 1rem;
+    color: #1b4332;
 }
 
 .quiz-resultado p {
-    color: #666;
+    color: #2d6a4f;
     margin-bottom: 2rem;
 }
 
 .btn-reiniciar {
     background: none;
-    border: 1px solid #1a1a1a;
+    border: 1px solid #d4a373;
     padding: 0.75rem 2rem;
     cursor: pointer;
     font-size: 0.875rem;
+    border-radius: 30px;
     transition: all 0.2s;
+    color: #d4a373;
+    font-weight: 500;
 }
 
 .btn-reiniciar:hover {
-    background: #1a1a1a;
+    background: #d4a373;
     color: white;
+}
+
+/* ===== CHAMADA ===== */
+.chamada {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
+    color: white;
+    text-align: center;
+}
+
+.chamada-conteudo h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.chamada-conteudo p {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    opacity: 0.9;
+}
+
+.chamada-botoes {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-chamada {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    text-decoration: none;
+    border-radius: 40px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-chamada.primario {
+    background: #d4a373;
+    color: #1b4332;
+}
+
+.btn-chamada.primario:hover {
+    background: #faedcd;
+    transform: translateY(-2px);
+}
+
+.btn-chamada.secundario {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+}
+
+.btn-chamada.secundario:hover {
+    background: white;
+    color: #1b4332;
 }
 
 /* ===== FOOTER ===== */
 .footer {
     padding: 4rem 0 2rem;
-    border-top: 1px solid #f0f0f0;
+    background: #1b4332;
+    color: #d8f3dc;
 }
 
 .footer-content {
@@ -534,28 +755,46 @@ input[type="range"]::-webkit-slider-thumb {
 
 .footer-content h3 {
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 0.5rem;
+    color: #d4a373;
 }
 
 .footer-content p {
-    color: #666;
+    color: #95d5b2;
     font-size: 0.875rem;
 }
 
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-links a {
+    color: #95d5b2;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #d4a373;
+}
+
 .footer-citacao {
-    max-width: 300px;
+    max-width: 250px;
     font-style: italic;
-    color: #999;
+    color: #95d5b2;
     font-size: 0.875rem;
 }
 
 .footer-copyright {
     text-align: center;
-    color: #999;
+    color: #95d5b2;
     font-size: 0.75rem;
     padding-top: 2rem;
-    border-top: 1px solid #f0f0f0;
+    border-top: 1px solid #2d6a4f;
 }
 
 /* ===== RESPONSIVO ===== */
@@ -571,15 +810,15 @@ input[type="range"]::-webkit-slider-thumb {
     .header .container {
         flex-direction: column;
         align-items: center;
+        text-align: center;
     }
     
     .nav {
-        gap: 1.5rem;
-        flex-wrap: wrap;
         justify-content: center;
     }
     
     .problema-header h2,
+    .impactos-header h2,
     .solucoes-header h2,
     .jogo-header h2,
     .quiz-header h2 {
@@ -592,7 +831,7 @@ input[type="range"]::-webkit-slider-thumb {
     }
     
     .quiz-pergunta {
-        padding: 2rem;
+        padding: 1.5rem;
     }
     
     .footer-content {
@@ -600,7 +839,29 @@ input[type="range"]::-webkit-slider-thumb {
         text-align: center;
     }
     
+    .footer-links {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
     .footer-citacao {
         margin: 0 auto;
+        text-align: center;
+    }
+    
+    .chamada-botoes {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-descricao {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
