@@ -9,16 +9,27 @@
 </head>
 <body>
 
-    <!-- ACESSIBILIDADE -->
+    <!-- ACESSIBILIDADE - PAINEL DE FONTES -->
     <div class="acessibilidade" id="acessibilidadeBtn">
         <span>AA</span>
     </div>
     
     <div class="acessibilidade-panel" id="acessibilidadePanel">
-        <button id="aumentarFonte">A+</button>
-        <button id="diminuirFonte">A-</button>
-        <button id="altoContraste">🌓 Contraste</button>
+        <button id="aumentarFonte">A+ Aumentar</button>
+        <button id="diminuirFonte">A- Diminuir</button>
     </div>
+
+    <!-- VLIBRAS - TRADUTOR DE LIBRAS -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 
     <!-- HEADER -->
     <header class="header">
@@ -39,7 +50,7 @@
     </header>
 
     <main>
-        <!-- HERO com imagem -->
+        <!-- HERO -->
         <section id="inicio" class="hero">
             <div class="container">
                 <div class="hero-conteudo">
@@ -47,13 +58,14 @@
                     <p class="hero-descricao">O equilíbrio entre produção e meio ambiente começa com um olhar atento ao que está por trás do que consumimos.</p>
                     <a href="#jogo" class="btn-hero">Experimente o simulador →</a>
                 </div>
-                <div class="hero-imagem">
-                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&h=400&fit=crop" alt="Campo sustentável">
+                <div class="hero-decoracao">
+                    <div class="decoracao-circulo"></div>
+                    <div class="decoracao-planta">🌱</div>
                 </div>
             </div>
         </section>
 
-        <!-- PROBLEMA (com mais informações) -->
+        <!-- PROBLEMA -->
         <section id="problema" class="problema">
             <div class="container">
                 <div class="problema-header">
@@ -81,7 +93,7 @@
             </div>
         </section>
 
-        <!-- NOVA SEÇÃO: IMPACTOS VISUAIS com gráfico/dados -->
+        <!-- IMPACTOS -->
         <section id="impactos" class="impactos">
             <div class="container">
                 <div class="impactos-header">
@@ -107,13 +119,14 @@
                         <p>Dos polinizadores ameaçados de extinção</p>
                     </div>
                 </div>
-                <div class="impactos-imagem">
-                    <img src="https://images.unsplash.com/photo-1574943320219-553eb213f472?w=800&h=400&fit=crop" alt="Plantação e natureza">
+                <div class="impactos-decoracao">
+                    <div class="decoracao-linha"></div>
+                    <span class="decoracao-texto">🌾 🌻 🐝</span>
                 </div>
             </div>
         </section>
 
-        <!-- SOLUÇÕES (mais completo) -->
+        <!-- SOLUÇÕES -->
         <section id="solucoes" class="solucoes">
             <div class="container">
                 <div class="solucoes-header">
@@ -124,34 +137,34 @@
                 <div class="solucoes-lista">
                     <div class="solucao-item">
                         <div class="solucao-numero">— 01</div>
-                        <h3>Agricultura de precisão</h3>
+                        <h3>🌾 Agricultura de precisão</h3>
                         <p>Drones e sensores aplicam defensivos apenas onde necessário, reduzindo o volume total em até 90%. Tecnologia acessível que aumenta produtividade e protege o meio ambiente.</p>
                     </div>
                     <div class="solucao-item">
                         <div class="solucao-numero">— 02</div>
-                        <h3>Controle biológico</h3>
+                        <h3>🐞 Controle biológico</h3>
                         <p>Substituir químicos por predadores naturais. Exemplo: joaninhas combatem pulgões, vespas controlam lagartas. Eficaz, barato e não polui.</p>
                     </div>
                     <div class="solucao-item">
                         <div class="solucao-numero">— 03</div>
-                        <h3>Rotação de culturas</h3>
+                        <h3>🔄 Rotação de culturas</h3>
                         <p>Alternar plantações evita o acúmulo de pragas e doenças, diminuindo a necessidade de intervenção química em até 50%.</p>
                     </div>
                     <div class="solucao-item">
                         <div class="solucao-numero">— 04</div>
-                        <h3>Certificação orgânica</h3>
+                        <h3>✅ Certificação orgânica</h3>
                         <p>Valorizar produtos sem agrotóxicos cria mercado justo e saudável. O mercado orgânico cresce 20% ao ano no Brasil.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- JOGO EDUCATIVO (mantido igual) -->
+        <!-- JOGO EDUCATIVO -->
         <section id="jogo" class="jogo">
             <div class="container">
                 <div class="jogo-header">
                     <span class="badge">04</span>
-                    <h2>Simulador de plantio</h2>
+                    <h2>🌱 Simulador de plantio</h2>
                     <p>Escolha entre usar agrotóxicos ou métodos naturais e veja o resultado</p>
                 </div>
                 
@@ -160,6 +173,7 @@
                         <div class="fazenda" id="fazenda">
                             <div class="planta" id="planta"></div>
                             <div class="solo"></div>
+                            <div class="sol-decoracao">☀️</div>
                         </div>
                     </div>
                     
@@ -188,12 +202,12 @@
             </div>
         </section>
 
-        <!-- QUIZ (mantido igual) -->
+        <!-- QUIZ -->
         <section id="quiz" class="quiz">
             <div class="container">
                 <div class="quiz-header">
                     <span class="badge">05</span>
-                    <h2>Desafio do conhecimento</h2>
+                    <h2>📝 Desafio do conhecimento</h2>
                     <p>Teste o que você aprendeu sobre agrotóxicos e biodiversidade</p>
                 </div>
                 
@@ -204,11 +218,11 @@
             </div>
         </section>
 
-        <!-- NOVA SEÇÃO: CHAMADA PARA AÇÃO -->
+        <!-- CHAMADA PARA AÇÃO -->
         <section class="chamada">
             <div class="container">
                 <div class="chamada-conteudo">
-                    <h2>Faça parte da mudança</h2>
+                    <h2>🌍 Faça parte da mudança</h2>
                     <p>Pequenas atitudes no seu dia a dia fazem a diferença: prefira alimentos orgânicos, apoie agricultores sustentáveis e compartilhe conhecimento.</p>
                     <div class="chamada-botoes">
                         <a href="#jogo" class="btn-chamada primario">▶ Experimente o simulador</a>
@@ -237,6 +251,7 @@
                 </div>
                 <div class="footer-citacao">
                     <p>“O agro sustentável não é utopia, é escolha diária.”</p>
+                    <p style="margin-top: 0.5rem;">🌱 🌻 🐝</p>
                 </div>
             </div>
             <div class="footer-copyright">
