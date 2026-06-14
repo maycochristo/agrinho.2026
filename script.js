@@ -8,22 +8,28 @@ let fonteAtual = 1;
 const classesFonte = ['fonte-pequena', 'fonte-normal', 'fonte-grande', 'fonte-muito-grande'];
 
 // Abrir/fechar painel de acessibilidade
-acessibilidadeBtn.addEventListener('click', () => {
-    const isVisible = acessibilidadePanel.style.display === 'flex';
-    acessibilidadePanel.style.display = isVisible ? 'none' : 'flex';
-});
+if (acessibilidadeBtn) {
+    acessibilidadeBtn.addEventListener('click', () => {
+        const isVisible = acessibilidadePanel.style.display === 'flex';
+        acessibilidadePanel.style.display = isVisible ? 'none' : 'flex';
+    });
+}
 
 // Aumentar fonte
-aumentarFonte.addEventListener('click', () => {
-    if (fonteAtual < 3) fonteAtual++;
-    aplicarFonte();
-});
+if (aumentarFonte) {
+    aumentarFonte.addEventListener('click', () => {
+        if (fonteAtual < 3) fonteAtual++;
+        aplicarFonte();
+    });
+}
 
 // Diminuir fonte
-diminuirFonte.addEventListener('click', () => {
-    if (fonteAtual > 0) fonteAtual--;
-    aplicarFonte();
-});
+if (diminuirFonte) {
+    diminuirFonte.addEventListener('click', () => {
+        if (fonteAtual > 0) fonteAtual--;
+        aplicarFonte();
+    });
+}
 
 function aplicarFonte() {
     document.body.classList.remove(...classesFonte);
@@ -38,8 +44,8 @@ if (fonteSalva !== null) {
     aplicarFonte();
 }
 
-// ===== JOGO EDUCATIVO (Simulador de Plantio) =====
-let estadoPlanta = 'neutro';
+// ==================== JOGO EDUCATIVO (Simulador de Plantio) ====================
+let estadoPlanta = 'neutro'; // neutro, crescida, doente, morta
 let quantidadeAgrotoxicos = 0;
 
 const planta = document.getElementById('planta');
@@ -51,6 +57,7 @@ const mensagemResultado = document.getElementById('mensagemResultado');
 const reiniciarJogo = document.getElementById('reiniciarJogo');
 
 function atualizarPlantaVisual() {
+    if (!planta) return;
     planta.classList.remove('crescida', 'morta', 'doente');
     
     if (estadoPlanta === 'crescida') {
@@ -63,6 +70,8 @@ function atualizarPlantaVisual() {
 }
 
 function verificarEstadoPlanta() {
+    if (!mensagemResultado) return;
+    
     if (quantidadeAgrotoxicos === 0 && estadoPlanta === 'crescida') {
         mensagemResultado.innerHTML = '🌱 PARABÉNS! Você cultivou sem agrotóxicos. A planta está SAUDÁVEL, o solo fértil e a BIODIVERSIDADE preservada!';
         mensagemResultado.style.color = '#2d6a4f';
@@ -83,45 +92,61 @@ function verificarEstadoPlanta() {
     atualizarPlantaVisual();
 }
 
-btnNatural.addEventListener('click', () => {
-    quantidadeAgrotoxicos = 0;
-    estadoPlanta = 'crescida';
-    agrotoxicosSlider.value = 0;
-    quantidadeValor.textContent = '0';
-    verificarEstadoPlanta();
-});
+// Botão método natural
+if (btnNatural) {
+    btnNatural.addEventListener('click', () => {
+        quantidadeAgrotoxicos = 0;
+        estadoPlanta = 'crescida';
+        if (agrotoxicosSlider) agrotoxicosSlider.value = '0';
+        if (quantidadeValor) quantidadeValor.textContent = '0';
+        verificarEstadoPlanta();
+    });
+}
 
-btnAplicar.addEventListener('click', () => {
-    if (estadoPlanta === 'morta') {
-        mensagemResultado.innerHTML = '❌ A TERRA JÁ ESTÁ ESTÉRIL! Não é possível plantar novamente sem recuperar o solo primeiro.';
-        return;
-    }
-    
-    if (estadoPlanta === 'crescida' && quantidadeAgrotoxicos > 0) {
-        estadoPlanta = 'doente';
-    } else if (estadoPlanta === 'neutro') {
-        estadoPlanta = 'doente';
-    }
-    
-    verificarEstadoPlanta();
-});
+// Botão aplicar agrotóxicos
+if (btnAplicar) {
+    btnAplicar.addEventListener('click', () => {
+        if (estadoPlanta === 'morta') {
+            if (mensagemResultado) {
+                mensagemResultado.innerHTML = '❌ A TERRA JÁ ESTÁ ESTÉRIL! Não é possível plantar novamente sem recuperar o solo primeiro.';
+            }
+            return;
+        }
+        
+        if (estadoPlanta === 'crescida' && quantidadeAgrotoxicos > 0) {
+            estadoPlanta = 'doente';
+        } else if (estadoPlanta === 'neutro') {
+            estadoPlanta = 'doente';
+        }
+        
+        verificarEstadoPlanta();
+    });
+}
 
-agrotoxicosSlider.addEventListener('input', (e) => {
-    quantidadeAgrotoxicos = parseInt(e.target.value);
-    quantidadeValor.textContent = quantidadeAgrotoxicos;
-});
+// Slider de quantidade
+if (agrotoxicosSlider) {
+    agrotoxicosSlider.addEventListener('input', (e) => {
+        quantidadeAgrotoxicos = parseInt(e.target.value);
+        if (quantidadeValor) quantidadeValor.textContent = quantidadeAgrotoxicos;
+    });
+}
 
-reiniciarJogo.addEventListener('click', () => {
-    quantidadeAgrotoxicos = 0;
-    estadoPlanta = 'neutro';
-    agrotoxicosSlider.value = 0;
-    quantidadeValor.textContent = '0';
-    planta.classList.remove('crescida', 'morta', 'doente');
-    mensagemResultado.innerHTML = '🌾 Faça sua escolha para começar';
-    mensagemResultado.style.color = '#2d6a4f';
-});
+// Reiniciar jogo
+if (reiniciarJogo) {
+    reiniciarJogo.addEventListener('click', () => {
+        quantidadeAgrotoxicos = 0;
+        estadoPlanta = 'neutro';
+        if (agrotoxicosSlider) agrotoxicosSlider.value = '0';
+        if (quantidadeValor) quantidadeValor.textContent = '0';
+        if (planta) planta.classList.remove('crescida', 'morta', 'doente');
+        if (mensagemResultado) {
+            mensagemResultado.innerHTML = '🌾 Faça sua escolha para começar';
+            mensagemResultado.style.color = '#2d6a4f';
+        }
+    });
+}
 
-// ===== QUIZ DE CONHECIMENTO =====
+// ==================== QUIZ DE CONHECIMENTO ====================
 const perguntas = [
     {
         texto: "O uso excessivo de agrotóxicos afeta principalmente:",
@@ -177,10 +202,17 @@ function carregarPergunta() {
         </div>
     `;
     
-    perguntaArea.innerHTML = html;
-    resultadoArea.style.display = 'none';
-    perguntaArea.style.display = 'block';
+    if (perguntaArea) {
+        perguntaArea.innerHTML = html;
+    }
+    if (resultadoArea) {
+        resultadoArea.style.display = 'none';
+    }
+    if (perguntaArea) {
+        perguntaArea.style.display = 'block';
+    }
     
+    // Adicionar eventos às opções
     document.querySelectorAll('.opcao').forEach(op => {
         op.addEventListener('click', (e) => {
             if (!quizAtivo) return;
@@ -207,26 +239,35 @@ function finalizarQuiz() {
         mensagem = `💚 Você acertou ${pontuacao} de ${perguntas.length}. Explore mais o site e descubra como podemos MUDAR essa realidade.`;
     }
     
-    resultadoArea.innerHTML = `
-        <div class="quiz-resultado">
-            <h3>Seu resultado</h3>
-            <p>${mensagem}</p>
-            <button class="btn-reiniciar" id="reiniciarQuiz">↺ Responder novamente</button>
-        </div>
-    `;
+    if (resultadoArea) {
+        resultadoArea.innerHTML = `
+            <div class="quiz-resultado">
+                <h3>Seu resultado</h3>
+                <p>${mensagem}</p>
+                <button class="btn-reiniciar" id="reiniciarQuiz">↺ Responder novamente</button>
+            </div>
+        `;
+    }
     
-    perguntaArea.style.display = 'none';
-    resultadoArea.style.display = 'block';
+    if (perguntaArea) {
+        perguntaArea.style.display = 'none';
+    }
+    if (resultadoArea) {
+        resultadoArea.style.display = 'block';
+    }
     
-    document.getElementById('reiniciarQuiz').addEventListener('click', () => {
-        perguntaAtual = 0;
-        pontuacao = 0;
-        quizAtivo = true;
-        carregarPergunta();
-    });
+    const reiniciarBtn = document.getElementById('reiniciarQuiz');
+    if (reiniciarBtn) {
+        reiniciarBtn.addEventListener('click', () => {
+            perguntaAtual = 0;
+            pontuacao = 0;
+            quizAtivo = true;
+            carregarPergunta();
+        });
+    }
 }
 
-// Smooth scroll para todos os links
+// Smooth scroll para todos os links de navegação
 document.querySelectorAll('.nav a, .btn-hero, .btn-chamada').forEach(link => {
     link.addEventListener('click', (e) => {
         const href = link.getAttribute('href');
@@ -241,5 +282,7 @@ document.querySelectorAll('.nav a, .btn-hero, .btn-chamada').forEach(link => {
     });
 });
 
-// Iniciar quiz
-carregarPergunta();
+// Iniciar o quiz quando a página carregar
+document.addEventListener('DOMContentLoaded', function() {
+    carregarPergunta();
+});
