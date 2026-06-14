@@ -1,23 +1,25 @@
-// ===== ACESSIBILIDADE =====
+// ===== ACESSIBILIDADE - AJUSTE DE FONTE =====
 const acessibilidadeBtn = document.getElementById('acessibilidadeBtn');
 const acessibilidadePanel = document.getElementById('acessibilidadePanel');
 const aumentarFonte = document.getElementById('aumentarFonte');
 const diminuirFonte = document.getElementById('diminuirFonte');
-const altoContraste = document.getElementById('altoContraste');
 
 let fonteAtual = 1;
 const classesFonte = ['fonte-pequena', 'fonte-normal', 'fonte-grande', 'fonte-muito-grande'];
 
+// Abrir/fechar painel de acessibilidade
 acessibilidadeBtn.addEventListener('click', () => {
     const isVisible = acessibilidadePanel.style.display === 'flex';
     acessibilidadePanel.style.display = isVisible ? 'none' : 'flex';
 });
 
+// Aumentar fonte
 aumentarFonte.addEventListener('click', () => {
     if (fonteAtual < 3) fonteAtual++;
     aplicarFonte();
 });
 
+// Diminuir fonte
 diminuirFonte.addEventListener('click', () => {
     if (fonteAtual > 0) fonteAtual--;
     aplicarFonte();
@@ -29,23 +31,15 @@ function aplicarFonte() {
     localStorage.setItem('fonteSize', fonteAtual);
 }
 
-altoContraste.addEventListener('click', () => {
-    document.body.classList.toggle('alto-contraste');
-    localStorage.setItem('altoContraste', document.body.classList.contains('alto-contraste'));
-});
-
-// Carregar preferências
+// Carregar preferência salva
 const fonteSalva = localStorage.getItem('fonteSize');
 if (fonteSalva !== null) {
     fonteAtual = parseInt(fonteSalva);
     aplicarFonte();
 }
-if (localStorage.getItem('altoContraste') === 'true') {
-    document.body.classList.add('alto-contraste');
-}
 
 // ===== JOGO EDUCATIVO (Simulador de Plantio) =====
-let estadoPlanta = 'neutro'; // neutro, crescida, doente, morta
+let estadoPlanta = 'neutro';
 let quantidadeAgrotoxicos = 0;
 
 const planta = document.getElementById('planta');
@@ -69,26 +63,21 @@ function atualizarPlantaVisual() {
 }
 
 function verificarEstadoPlanta() {
-    if (quantidadeAgrotoxicos === 0 && estadoPlanta === 'neutro') {
-        // Ainda não fez nada
-        return;
-    }
-    
     if (quantidadeAgrotoxicos === 0 && estadoPlanta === 'crescida') {
-        mensagemResultado.innerHTML = '🌱 Parabéns! Você cultivou sem agrotóxicos. A planta está saudável, o solo fértil e a biodiversidade preservada!';
-        mensagemResultado.style.color = '#4CAF50';
+        mensagemResultado.innerHTML = '🌱 PARABÉNS! Você cultivou sem agrotóxicos. A planta está SAUDÁVEL, o solo fértil e a BIODIVERSIDADE preservada!';
+        mensagemResultado.style.color = '#2d6a4f';
     } else if (quantidadeAgrotoxicos > 0 && quantidadeAgrotoxicos <= 3) {
         estadoPlanta = 'doente';
-        mensagemResultado.innerHTML = '⚠️ Você aplicou poucos agrotóxicos. A planta está doente e a biodiversidade local foi afetada. Abelhas e outros polinizadores estão sumindo.';
-        mensagemResultado.style.color = '#DAA520';
+        mensagemResultado.innerHTML = '⚠️ ALERTA! Você aplicou POUCOS agrotóxicos. A planta está doente e a BIODIVERSIDADE local foi afetada. Abelhas e polinizadores estão sumindo.';
+        mensagemResultado.style.color = '#bc6c25';
     } else if (quantidadeAgrotoxicos > 3 && quantidadeAgrotoxicos <= 7) {
         estadoPlanta = 'doente';
-        mensagemResultado.innerHTML = '⚠️⚠️ Você aplicou uma quantidade moderada de agrotóxicos. O solo está contaminado, minhocas morreram e a água próxima foi poluída.';
-        mensagemResultado.style.color = '#DAA520';
+        mensagemResultado.innerHTML = '⚠️⚠️ GRAVE! Você aplicou quantidade MODERADA de agrotóxicos. O solo está contaminado, minhocas morreram e a água foi poluída.';
+        mensagemResultado.style.color = '#bc6c25';
     } else if (quantidadeAgrotoxicos > 7) {
         estadoPlanta = 'morta';
-        mensagemResultado.innerHTML = '💀❌ Quantidade EXCESSIVA de agrotóxicos! A planta morreu, o solo ficou estéril por décadas, o lençol freático foi contaminado. Esta terra não produzirá mais nada.';
-        mensagemResultado.style.color = '#dc3545';
+        mensagemResultado.innerHTML = '💀❌ FATAL! Quantidade EXCESSIVA de agrotóxicos! A planta MORREU, o solo ficou estéril por décadas, o lençol freático foi contaminado. Esta terra não produzirá mais nada.';
+        mensagemResultado.style.color = '#d62828';
     }
     
     atualizarPlantaVisual();
@@ -104,7 +93,7 @@ btnNatural.addEventListener('click', () => {
 
 btnAplicar.addEventListener('click', () => {
     if (estadoPlanta === 'morta') {
-        mensagemResultado.innerHTML = '❌ A terra já está estéril. Não é possível plantar novamente sem recuperar o solo primeiro.';
+        mensagemResultado.innerHTML = '❌ A TERRA JÁ ESTÁ ESTÉRIL! Não é possível plantar novamente sem recuperar o solo primeiro.';
         return;
     }
     
@@ -128,8 +117,8 @@ reiniciarJogo.addEventListener('click', () => {
     agrotoxicosSlider.value = 0;
     quantidadeValor.textContent = '0';
     planta.classList.remove('crescida', 'morta', 'doente');
-    mensagemResultado.innerHTML = 'Faça sua escolha para começar';
-    mensagemResultado.style.color = '#666';
+    mensagemResultado.innerHTML = '🌾 Faça sua escolha para começar';
+    mensagemResultado.style.color = '#2d6a4f';
 });
 
 // ===== QUIZ DE CONHECIMENTO =====
@@ -209,14 +198,13 @@ function finalizarQuiz() {
     quizAtivo = false;
     const percentual = (pontuacao / perguntas.length) * 100;
     let mensagem = '';
-    let estilo = '';
     
     if (percentual === 100) {
-        mensagem = '🎉 Perfeito! Você acertou todas as perguntas. Parabéns pela consciência ambiental! 🌱';
+        mensagem = '🎉 PERFEITO! Você acertou todas as perguntas. PARABÉNS pela consciência ambiental! 🌱';
     } else if (percentual >= 50) {
-        mensagem = `🌱 Bom trabalho! Você acertou ${pontuacao} de ${perguntas.length} (${percentual}%). Continue aprendendo sobre agro sustentável.`;
+        mensagem = `🌱 BOM TRABALHO! Você acertou ${pontuacao} de ${perguntas.length} (${percentual}%). Continue aprendendo sobre AGRO SUSTENTÁVEL.`;
     } else {
-        mensagem = `💚 Você acertou ${pontuacao} de ${perguntas.length}. Explore mais o site e descubra como podemos mudar essa realidade.`;
+        mensagem = `💚 Você acertou ${pontuacao} de ${perguntas.length}. Explore mais o site e descubra como podemos MUDAR essa realidade.`;
     }
     
     resultadoArea.innerHTML = `
@@ -239,12 +227,13 @@ function finalizarQuiz() {
 }
 
 // Smooth scroll para todos os links
-document.querySelectorAll('.nav a, .btn-hero').forEach(link => {
+document.querySelectorAll('.nav a, .btn-hero, .btn-chamada').forEach(link => {
     link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href');
-        if (targetId && targetId !== '#') {
-            const target = document.querySelector(targetId);
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+            e.preventDefault();
+            const targetId = href.substring(1);
+            const target = document.getElementById(targetId);
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth' });
             }
