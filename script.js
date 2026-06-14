@@ -1,156 +1,159 @@
-/* ========================================
-   SCRIPT PRINCIPAL - SEDUZIDOS PELA CEGUEIRA DA POLUIÇÃO
-   Funcionalidades: Quiz, Acessibilidade (fonte, contraste, Libras)
-   ======================================== */
+// ==================== ACESSIBILIDADE ====================
+// Botão de abrir/fechar painel
+const botaoAcessibilidade = document.getElementById('botaoAcessibilidade');
+const painelAcessibilidade = document.getElementById('painelAcessibilidade');
 
-// Aguarda o carregamento completo do DOM
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // ========== 1. FUNCIONALIDADE PRINCIPAL: QUIZ ==========
-    const botaoResultado = document.getElementById('btnResultado');
-    const resultadoDiv = document.getElementById('resultadoQuiz');
+botaoAcessibilidade.addEventListener('click', () => {
+    if (painelAcessibilidade.style.display === 'flex') {
+        painelAcessibilidade.style.display = 'none';
+    } else {
+        painelAcessibilidade.style.display = 'flex';
+    }
+});
 
-    if (botaoResultado) {
-        botaoResultado.addEventListener('click', function() {
-            // Coletar respostas das 5 perguntas
-            const q1 = document.querySelector('input[name="q1"]:checked');
-            const q2 = document.querySelector('input[name="q2"]:checked');
-            const q3 = document.querySelector('input[name="q3"]:checked');
-            const q4 = document.querySelector('input[name="q4"]:checked');
-            const q5 = document.querySelector('input[name="q5"]:checked');
-            
-            // Verificar se todas foram respondidas
-            if (!q1 || !q2 || !q3 || !q4 || !q5) {
-                resultadoDiv.style.display = 'block';
-                resultadoDiv.innerHTML = '⚠️ Por favor, responda todas as 5 perguntas antes de ver o resultado!';
-                resultadoDiv.style.backgroundColor = '#cc3300';
-                return;
-            }
-            
-            // Somar pontos (cada resposta correta vale 1)
-            let pontos = 0;
-            if (q1.value === '1') pontos++;
-            if (q2.value === '1') pontos++;
-            if (q3.value === '1') pontos++;
-            if (q4.value === '1') pontos++;
-            if (q5.value === '1') pontos++;
-            
-            // Calcular percentual
-            const percentual = (pontos / 5) * 100;
-            
-            // Mensagem personalizada
-            let mensagem = '';
-            if (percentual === 100) {
-                mensagem = '🌟 Parabéns! Você NÃO está seduzido pela cegueira da poluição! Enxerga a realidade e busca soluções sustentáveis!';
-            } else if (percentual >= 80) {
-                mensagem = '🍃 Muito bom! Você já tem consciência, mas ainda pode abrir mais os olhos para o problema.';
-            } else if (percentual >= 60) {
-                mensagem = '🌱 Bom! Você está no caminho, mas precisa conhecer mais sobre alternativas naturais.';
-            } else if (percentual >= 40) {
-                mensagem = '⚠️ Atenção! Você ainda está um pouco seduzido pela cegueira da poluição. Leia o conteúdo do site!';
-            } else {
-                mensagem = '❌ Infelizmente, você ainda está seduzido pela cegueira da poluição. Reflita sobre os impactos dos agrotóxicos!';
-            }
-            
-            // Exibir resultado
-            resultadoDiv.style.display = 'block';
-            resultadoDiv.innerHTML = `🌿 Seu nível de consciência ambiental: ${percentual}%<br>${mensagem}`;
-            resultadoDiv.style.backgroundColor = '#2d5a27';
-            
-            // Rolar até o resultado
-            resultadoDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        });
+// Aumentar e diminuir fonte
+let tamanhoAtual = 2; // 0: pequena, 1: normal, 2: grande, 3: muito grande
+const classesFonte = ['fonte-pequena', 'fonte-normal', 'fonte-grande', 'fonte-muito-grande'];
+
+function aplicarTamanhoFonte(indice) {
+    document.body.classList.remove(...classesFonte);
+    document.body.classList.add(classesFonte[indice]);
+    localStorage.setItem('tamanhoFonte', indice);
+}
+
+document.getElementById('aumentarFonteBtn').addEventListener('click', () => {
+    if (tamanhoAtual < 3) tamanhoAtual++;
+    aplicarTamanhoFonte(tamanhoAtual);
+});
+
+document.getElementById('diminuirFonteBtn').addEventListener('click', () => {
+    if (tamanhoAtual > 0) tamanhoAtual--;
+    aplicarTamanhoFonte(tamanhoAtual);
+});
+
+// Alto Contraste
+const altoContrasteBtn = document.getElementById('altoContrasteBtn');
+altoContrasteBtn.addEventListener('click', () => {
+    document.body.classList.toggle('alto-contraste');
+    const isContraste = document.body.classList.contains('alto-contraste');
+    localStorage.setItem('altoContraste', isContraste);
+});
+
+// Carregar preferências salvas
+const fonteSalva = localStorage.getItem('tamanhoFonte');
+if (fonteSalva !== null) {
+    tamanhoAtual = parseInt(fonteSalva);
+    aplicarTamanhoFonte(tamanhoAtual);
+}
+const contrasteSalvo = localStorage.getItem('altoContraste') === 'true';
+if (contrasteSalvo) {
+    document.body.classList.add('alto-contraste');
+}
+
+// ==================== QUIZ INTERATIVO (FUNCIONALIDADE PRINCIPAL) ====================
+// Array com perguntas, opções e respostas (índice 0 a 3)
+const perguntas = [
+    {
+        texto: "O uso excessivo de agrotóxicos afeta principalmente:",
+        opcoes: ["Apenas as pragas das plantações", "Somente o solo da fazenda", "A biodiversidade, a água e a saúde humana", "Apenas o bolso do agricultor"],
+        correta: 2
+    },
+    {
+        texto: "Qual das alternativas é uma solução tecnológica para reduzir agrotóxicos?",
+        opcoes: ["Queimar a plantação após a colheita", "Agricultura de precisão com drones", "Aumentar a dose de veneno", "Ignorar as pragas"],
+        correta: 1
+    },
+    {
+        texto: "Como a biodiversidade é prejudicada pelos agrotóxicos?",
+        opcoes: ["Aumenta o número de espécies de insetos", "Polinizadores como abelhas morrem", "Deixa o solo mais fértil", "Não causa nenhum impacto"],
+        correta: 1
+    },
+    {
+        texto: "Qual prática contribui para um agro mais forte e sustentável?",
+        opcoes: ["Rotação de culturas e controle biológico", "Uso indiscriminado de químicos", "Desmatamento de áreas nativas", "Plantio em área única todos os anos"],
+        correta: 0
     }
-    
-    // ========== 2. ACESSIBILIDADE: PAINEL ==========
-    const btnAcessibilidade = document.getElementById('btnAcessibilidade');
-    const painel = document.getElementById('painelAcessibilidade');
-    const fecharPainel = document.getElementById('fecharPainel');
-    
-    if (btnAcessibilidade) {
-        btnAcessibilidade.addEventListener('click', function() {
-            painel.style.display = painel.style.display === 'block' ? 'none' : 'block';
+];
+
+let perguntaAtual = 0;
+let pontuacao = 0;
+let quizFinalizado = false;
+
+const perguntaContainer = document.getElementById('perguntaContainer');
+const resultadoContainer = document.getElementById('resultadoContainer');
+const resultadoTexto = document.getElementById('resultadoTexto');
+const reiniciarBtn = document.getElementById('reiniciarQuizBtn');
+
+// Função para carregar a pergunta atual
+function carregarPergunta() {
+    if (perguntaAtual < perguntas.length) {
+        const p = perguntas[perguntaAtual];
+        let html = `
+            <h3>${p.texto}</h3>
+            <div class="opcoes">
+        `;
+        p.opcoes.forEach((opcao, idx) => {
+            html += `<div class="opcao" data-indice="${idx}">${opcao}</div>`;
         });
-    }
-    
-    if (fecharPainel) {
-        fecharPainel.addEventListener('click', function() {
-            painel.style.display = 'none';
-        });
-    }
-    
-    // ========== 3. AUMENTAR E DIMINUIR FONTE ==========
-    const aumentarFonte = document.getElementById('aumentarFonte');
-    const diminuirFonte = document.getElementById('diminuirFonte');
-    
-    function ajustarFonte(aumentar) {
-        const body = document.body;
-        let tamanhoAtual = parseFloat(window.getComputedStyle(body).fontSize);
-        let novo = aumentar ? tamanhoAtual + 2 : tamanhoAtual - 2;
-        if (novo >= 12 && novo <= 28) {
-            body.style.fontSize = novo + 'px';
-        }
-    }
-    
-    if (aumentarFonte) {
-        aumentarFonte.addEventListener('click', function() {
-            ajustarFonte(true);
-        });
-    }
-    
-    if (diminuirFonte) {
-        diminuirFonte.addEventListener('click', function() {
-            ajustarFonte(false);
-        });
-    }
-    
-    // ========== 4. ALTO CONTRASTE ==========
-    const altoContraste = document.getElementById('altoContraste');
-    
-    if (altoContraste) {
-        altoContraste.addEventListener('click', function() {
-            document.body.classList.toggle('alto-contraste');
-            if (document.body.classList.contains('alto-contraste')) {
-                localStorage.setItem('altoContraste', 'ativo');
-            } else {
-                localStorage.setItem('altoContraste', 'desativado');
-            }
-        });
+        html += `</div><p>Pergunta ${perguntaAtual+1} de ${perguntas.length}</p>`;
+        perguntaContainer.innerHTML = html;
+        resultadoContainer.style.display = 'none';
+        perguntaContainer.style.display = 'block';
         
-        if (localStorage.getItem('altoContraste') === 'ativo') {
-            document.body.classList.add('alto-contraste');
-        }
-    }
-    
-    // ========== 5. MODAL LIBRAS ==========
-    const btnLibras = document.getElementById('btnLibrasInfo');
-    const modalLibras = document.getElementById('modalLibras');
-    const fecharModal = document.querySelector('.fecharModal');
-    
-    if (btnLibras) {
-        btnLibras.addEventListener('click', function() {
-            modalLibras.style.display = 'block';
+        // Adicionar eventos de clique nas opções
+        document.querySelectorAll('.opcao').forEach(op => {
+            op.addEventListener('click', (e) => {
+                if (quizFinalizado) return;
+                const escolhido = parseInt(op.getAttribute('data-indice'));
+                if (escolhido === p.correta) {
+                    pontuacao++;
+                }
+                perguntaAtual++;
+                if (perguntaAtual < perguntas.length) {
+                    carregarPergunta();
+                } else {
+                    finalizarQuiz();
+                }
+            });
         });
+    } else {
+        finalizarQuiz();
     }
+}
+
+function finalizarQuiz() {
+    perguntaContainer.style.display = 'none';
+    resultadoContainer.style.display = 'block';
+    const percentual = (pontuacao / perguntas.length) * 100;
+    let mensagem = '';
+    if (percentual === 100) mensagem = `Excelente! Você acertou ${pontuacao} de ${perguntas.length} (${percentual}%). Você tem consciência ecológica! 🌱`;
+    else if (percentual >= 50) mensagem = `Bom trabalho! Você acertou ${pontuacao} de ${perguntas.length} (${percentual}%). Continue aprendendo sobre sustentabilidade! 🌍`;
+    else mensagem = `Você acertou ${pontuacao} de ${perguntas.length} (${percentual}%). Que tal explorar mais o site para entender a importância do agro sustentável? 💚`;
     
-    if (fecharModal) {
-        fecharModal.addEventListener('click', function() {
-            modalLibras.style.display = 'none';
-        });
-    }
-    
-    window.addEventListener('click', function(event) {
-        if (event.target === modalLibras) {
-            modalLibras.style.display = 'none';
-        }
-    });
-    
-    // ========== 6. FECHAR PAINEL AO CLICAR FORA ==========
-    document.addEventListener('click', function(event) {
-        if (painel && painel.style.display === 'block') {
-            if (!painel.contains(event.target) && event.target !== btnAcessibilidade) {
-                painel.style.display = 'none';
-            }
+    resultadoTexto.innerHTML = mensagem;
+    quizFinalizado = true;
+}
+
+function reiniciarQuiz() {
+    perguntaAtual = 0;
+    pontuacao = 0;
+    quizFinalizado = false;
+    carregarPergunta();
+}
+
+reiniciarBtn.addEventListener('click', reiniciarQuiz);
+
+// Iniciar o quiz quando a página carregar
+carregarPergunta();
+
+// Suavizar rolagem ao clicar nos links do menu
+document.querySelectorAll('.menu a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if(targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
